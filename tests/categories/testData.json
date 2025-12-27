@@ -1,0 +1,6 @@
+{
+  "url": "https://ethiofind.com/categories",
+  "expectedMinCategories": 20,
+  "expectedMinSubcategories": 100,
+  "maxLoadTime": 15000
+}

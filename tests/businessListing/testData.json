@@ -1,0 +1,5 @@
+{
+  "url": "https://ethiofind.com",
+  "expectedMinBusinesses": 1,
+  "timeout": 10000
+}

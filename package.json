@@ -1,0 +1,35 @@
+{
+  "name": "ethiofind",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node server.js",
+    "test:addBusiness": "node ./tests/addBusiness/addBusiness.test.js",
+    "test:about": "node ./tests/about/about.test.js",
+    "test:businessListing": "node ./tests/businessListing/businessListing.test.js",
+    "test:businessDetailsNavigation": "node ./tests/businessDetailsNavigation/businessDetailsNavigation.test.js",
+    "test:categories": "node ./tests/categories/categories.test.js",
+    "test:categoriesPageLoad": "node ./tests/categoriesPageLoad/categoriesPageLoad.test.js",
+    "test:categoryNavigation": "node ./tests/categoryNavigation/categoryNavigation.test.js",
+    "test:pageLoad": "node ./tests/pageLoad/pageLoad.test.js",
+    "test:login": "node ./tests/login/login.test.js",
+    "test:register": "node ./tests/register/register.test.js",
+    "test:passwordReset": "node ./tests/passwordReset/passwordReset.test.js",
+    "test:header": "node ./tests/header/header.test.js",
+    "test:footer": "node ./tests/footer/footer.test.js",
+    "test:footerlinks": "node ./tests/footer/footerlinks.test.js",
+    "test:search": "node ./tests/search/search.test.js",
+    "test:logout": "node ./tests/logout/logout.test.js",
+    "test:loginThenAddBusiness": "node ./tests/loginThenAddBusiness/loginThenAddBusiness.test.js",
+    "test:loginThenCheckBusiness": "node ./tests/loginThenCheckBusiness/loginThenCheckBusiness.test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chromedriver": "^143.0.3",
+    "express": "^4.22.1",
+    "selenium-webdriver": "^4.39.0"
+  }
+}
