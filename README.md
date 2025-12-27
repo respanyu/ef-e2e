@@ -64,6 +64,9 @@ ethiofind/
 │   ├── register/
 │   │   ├── register.test.js      # User registration functionality
 │   │   └── testData.json
+│   ├── activateUser/
+│   │   ├── activateUser.test.js  # User account activation via email verification
+│   │   └── testData.json
 │   ├── passwordReset/
 │   │   ├── passwordReset.test.js # Password reset functionality
 │   │   └── testData.json
@@ -151,6 +154,7 @@ npm run test:logout            # User logout functionality
 npm run test:loginThenAddBusiness  # Combined login and add business test
 npm run test:loginThenCheckBusiness  # Login and check claimed business test
 npm run test:register          # User registration functionality
+npm run test:activateUser      # User account activation via email verification
 npm run test:passwordReset     # Password reset functionality
 
 # UI component tests
@@ -360,6 +364,14 @@ To run the register test that checks the registration functionality:
 
 ```
 npm run test:register
+```
+
+### Run the Activate User Test
+
+To run the activate user test that registers a new user and verifies account activation via email link:
+
+```
+npm run test:activateUser
 ```
 
 ### Run the Header Test

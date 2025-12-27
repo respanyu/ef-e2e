@@ -223,274 +223,311 @@ exec(`node ${pageLoadTestPath}`, (error, stdout, stderr) => {
 
                           console.log(stdout4);
 
-                          // Run the password reset test
-                          const passwordResetTestPath = path.join(
+                          // Run the activate user test
+                          const activateUserTestPath = path.join(
                             __dirname,
                             "tests",
-                            "passwordReset",
-                            "passwordReset.test.js"
+                            "activateUser",
+                            "activateUser.test.js"
                           );
 
                           exec(
-                            `node ${passwordResetTestPath}`,
+                            `node ${activateUserTestPath}`,
                             (error4_5, stdout4_5, stderr4_5) => {
                               if (error4_5) {
                                 console.error(
-                                  `❌ Password Reset Test failed: ${error4_5.message}`
+                                  `❌ Activate User Test failed: ${error4_5.message}`
                                 );
                                 process.exit(1);
                               }
 
                               if (stderr4_5) {
                                 console.error(
-                                  `❌ Password Reset Test stderr: ${stderr4_5}`
+                                  `❌ Activate User Test stderr: ${stderr4_5}`
                                 );
                                 process.exit(1);
                               }
 
                               console.log(stdout4_5);
 
-                              // Run the header test
-                              const headerTestPath = path.join(
+                              // Run the password reset test
+                              const passwordResetTestPath = path.join(
                                 __dirname,
                                 "tests",
-                                "header",
-                                "header.test.js"
+                                "passwordReset",
+                                "passwordReset.test.js"
                               );
 
                               exec(
-                                `node ${headerTestPath}`,
-                                (error5, stdout5, stderr5) => {
-                                  if (error5) {
+                                `node ${passwordResetTestPath}`,
+                                (error4_5, stdout4_5, stderr4_5) => {
+                                  if (error4_5) {
                                     console.error(
-                                      `❌ Header Test failed: ${error5.message}`
+                                      `❌ Password Reset Test failed: ${error4_5.message}`
                                     );
                                     process.exit(1);
                                   }
 
-                                  if (stderr5) {
+                                  if (stderr4_5) {
                                     console.error(
-                                      `❌ Header Test stderr: ${stderr5}`
+                                      `❌ Password Reset Test stderr: ${stderr4_5}`
                                     );
                                     process.exit(1);
                                   }
 
-                                  console.log(stdout5);
+                                  console.log(stdout4_5);
 
-                                  // Run the footer test
-                                  const footerTestPath = path.join(
+                                  // Run the header test
+                                  const headerTestPath = path.join(
                                     __dirname,
                                     "tests",
-                                    "footer",
-                                    "footer.test.js"
+                                    "header",
+                                    "header.test.js"
                                   );
 
                                   exec(
-                                    `node ${footerTestPath}`,
-                                    (error6, stdout6, stderr6) => {
-                                      if (error6) {
+                                    `node ${headerTestPath}`,
+                                    (error5, stdout5, stderr5) => {
+                                      if (error5) {
                                         console.error(
-                                          `❌ Footer Test failed: ${error6.message}`
+                                          `❌ Header Test failed: ${error5.message}`
                                         );
                                         process.exit(1);
                                       }
 
-                                      if (stderr6) {
+                                      if (stderr5) {
                                         console.error(
-                                          `❌ Footer Test stderr: ${stderr6}`
+                                          `❌ Header Test stderr: ${stderr5}`
                                         );
                                         process.exit(1);
                                       }
 
-                                      console.log(stdout6);
+                                      console.log(stdout5);
 
-                                      // Run the footer links test
-                                      const footerLinksTestPath = path.join(
+                                      // Run the footer test
+                                      const footerTestPath = path.join(
                                         __dirname,
                                         "tests",
-                                        "footerLinks",
-                                        "footerlinks.test.js"
+                                        "footer",
+                                        "footer.test.js"
                                       );
 
                                       exec(
-                                        `node ${footerLinksTestPath}`,
-                                        (error6_5, stdout6_5, stderr6_5) => {
-                                          if (error6_5) {
+                                        `node ${footerTestPath}`,
+                                        (error6, stdout6, stderr6) => {
+                                          if (error6) {
                                             console.error(
-                                              `❌ Footer Links Test failed: ${error6_5.message}`
+                                              `❌ Footer Test failed: ${error6.message}`
                                             );
                                             process.exit(1);
                                           }
 
-                                          if (stderr6_5) {
+                                          if (stderr6) {
                                             console.error(
-                                              `❌ Footer Links Test stderr: ${stderr6_5}`
+                                              `❌ Footer Test stderr: ${stderr6}`
                                             );
                                             process.exit(1);
                                           }
 
-                                          console.log(stdout6_5);
+                                          console.log(stdout6);
 
-                                          // Run the about test
-                                          const aboutTestPath = path.join(
+                                          // Run the footer links test
+                                          const footerLinksTestPath = path.join(
                                             __dirname,
                                             "tests",
-                                            "about",
-                                            "about.test.js"
+                                            "footerLinks",
+                                            "footerlinks.test.js"
                                           );
 
                                           exec(
-                                            `node ${aboutTestPath}`,
-                                            (error7, stdout7, stderr7) => {
-                                              if (error7) {
+                                            `node ${footerLinksTestPath}`,
+                                            (
+                                              error6_5,
+                                              stdout6_5,
+                                              stderr6_5
+                                            ) => {
+                                              if (error6_5) {
                                                 console.error(
-                                                  `❌ About Test failed: ${error7.message}`
+                                                  `❌ Footer Links Test failed: ${error6_5.message}`
                                                 );
                                                 process.exit(1);
                                               }
 
-                                              if (stderr7) {
+                                              if (stderr6_5) {
                                                 console.error(
-                                                  `❌ About Test stderr: ${stderr7}`
+                                                  `❌ Footer Links Test stderr: ${stderr6_5}`
                                                 );
                                                 process.exit(1);
                                               }
 
-                                              console.log(stdout7);
+                                              console.log(stdout6_5);
 
-                                              // Run the categories page load test
-                                              const categoriesPageLoadTestPath =
-                                                path.join(
-                                                  __dirname,
-                                                  "tests",
-                                                  "categoriesPageLoad",
-                                                  "categoriesPageLoad.test.js"
-                                                );
+                                              // Run the about test
+                                              const aboutTestPath = path.join(
+                                                __dirname,
+                                                "tests",
+                                                "about",
+                                                "about.test.js"
+                                              );
 
                                               exec(
-                                                `node ${categoriesPageLoadTestPath}`,
-                                                (
-                                                  error7_5,
-                                                  stdout7_5,
-                                                  stderr7_5
-                                                ) => {
-                                                  if (error7_5) {
+                                                `node ${aboutTestPath}`,
+                                                (error7, stdout7, stderr7) => {
+                                                  if (error7) {
                                                     console.error(
-                                                      `❌ Categories Page Load Test failed: ${error7_5.message}`
+                                                      `❌ About Test failed: ${error7.message}`
                                                     );
                                                     process.exit(1);
                                                   }
 
-                                                  if (stderr7_5) {
+                                                  if (stderr7) {
                                                     console.error(
-                                                      `❌ Categories Page Load Test stderr: ${stderr7_5}`
+                                                      `❌ About Test stderr: ${stderr7}`
                                                     );
                                                     process.exit(1);
                                                   }
 
-                                                  console.log(stdout7_5);
+                                                  console.log(stdout7);
 
-                                                  // Run the categories test
-                                                  const categoriesTestPath =
+                                                  // Run the categories page load test
+                                                  const categoriesPageLoadTestPath =
                                                     path.join(
                                                       __dirname,
                                                       "tests",
-                                                      "categories",
-                                                      "categories.test.js"
+                                                      "categoriesPageLoad",
+                                                      "categoriesPageLoad.test.js"
                                                     );
 
                                                   exec(
-                                                    `node ${categoriesTestPath}`,
+                                                    `node ${categoriesPageLoadTestPath}`,
                                                     (
-                                                      error8,
-                                                      stdout8,
-                                                      stderr8
+                                                      error7_5,
+                                                      stdout7_5,
+                                                      stderr7_5
                                                     ) => {
-                                                      if (error8) {
+                                                      if (error7_5) {
                                                         console.error(
-                                                          `❌ Categories Test failed: ${error8.message}`
+                                                          `❌ Categories Page Load Test failed: ${error7_5.message}`
                                                         );
                                                         process.exit(1);
                                                       }
 
-                                                      if (stderr8) {
+                                                      if (stderr7_5) {
                                                         console.error(
-                                                          `❌ Categories Test stderr: ${stderr8}`
+                                                          `❌ Categories Page Load Test stderr: ${stderr7_5}`
                                                         );
                                                         process.exit(1);
                                                       }
 
-                                                      console.log(stdout8);
+                                                      console.log(stdout7_5);
 
-                                                      // Run the category navigation test
-                                                      const categoryNavigationTestPath =
+                                                      // Run the categories test
+                                                      const categoriesTestPath =
                                                         path.join(
                                                           __dirname,
                                                           "tests",
-                                                          "categoryNavigation",
-                                                          "categoryNavigation.test.js"
+                                                          "categories",
+                                                          "categories.test.js"
                                                         );
 
                                                       exec(
-                                                        `node ${categoryNavigationTestPath}`,
+                                                        `node ${categoriesTestPath}`,
                                                         (
-                                                          error8_5,
-                                                          stdout8_5,
-                                                          stderr8_5
+                                                          error8,
+                                                          stdout8,
+                                                          stderr8
                                                         ) => {
-                                                          if (error8_5) {
+                                                          if (error8) {
                                                             console.error(
-                                                              `❌ Category Navigation Test failed: ${error8_5.message}`
+                                                              `❌ Categories Test failed: ${error8.message}`
                                                             );
                                                             process.exit(1);
                                                           }
 
-                                                          if (stderr8_5) {
+                                                          if (stderr8) {
                                                             console.error(
-                                                              `❌ Category Navigation Test stderr: ${stderr8_5}`
+                                                              `❌ Categories Test stderr: ${stderr8}`
                                                             );
                                                             process.exit(1);
                                                           }
 
-                                                          console.log(
-                                                            stdout8_5
-                                                          );
+                                                          console.log(stdout8);
 
-                                                          // Run the search test
-                                                          const searchTestPath =
+                                                          // Run the category navigation test
+                                                          const categoryNavigationTestPath =
                                                             path.join(
                                                               __dirname,
                                                               "tests",
-                                                              "search",
-                                                              "search.test.js"
+                                                              "categoryNavigation",
+                                                              "categoryNavigation.test.js"
                                                             );
 
                                                           exec(
-                                                            `node ${searchTestPath}`,
+                                                            `node ${categoryNavigationTestPath}`,
                                                             (
-                                                              error9,
-                                                              stdout9,
-                                                              stderr9
+                                                              error8_5,
+                                                              stdout8_5,
+                                                              stderr8_5
                                                             ) => {
-                                                              if (error9) {
+                                                              if (error8_5) {
                                                                 console.error(
-                                                                  `❌ Search Test failed: ${error9.message}`
+                                                                  `❌ Category Navigation Test failed: ${error8_5.message}`
                                                                 );
                                                                 process.exit(1);
                                                               }
 
-                                                              if (stderr9) {
+                                                              if (stderr8_5) {
                                                                 console.error(
-                                                                  `❌ Search Test stderr: ${stderr9}`
+                                                                  `❌ Category Navigation Test stderr: ${stderr8_5}`
                                                                 );
                                                                 process.exit(1);
                                                               }
 
                                                               console.log(
-                                                                stdout9
+                                                                stdout8_5
                                                               );
-                                                              console.log(
-                                                                "\n🎉 All tests completed successfully!"
+
+                                                              // Run the search test
+                                                              const searchTestPath =
+                                                                path.join(
+                                                                  __dirname,
+                                                                  "tests",
+                                                                  "search",
+                                                                  "search.test.js"
+                                                                );
+
+                                                              exec(
+                                                                `node ${searchTestPath}`,
+                                                                (
+                                                                  error9,
+                                                                  stdout9,
+                                                                  stderr9
+                                                                ) => {
+                                                                  if (error9) {
+                                                                    console.error(
+                                                                      `❌ Search Test failed: ${error9.message}`
+                                                                    );
+                                                                    process.exit(
+                                                                      1
+                                                                    );
+                                                                  }
+
+                                                                  if (stderr9) {
+                                                                    console.error(
+                                                                      `❌ Search Test stderr: ${stderr9}`
+                                                                    );
+                                                                    process.exit(
+                                                                      1
+                                                                    );
+                                                                  }
+
+                                                                  console.log(
+                                                                    stdout9
+                                                                  );
+                                                                  console.log(
+                                                                    "\n🎉 All tests completed successfully!"
+                                                                  );
+                                                                }
                                                               );
                                                             }
                                                           );

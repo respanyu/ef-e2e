@@ -15,6 +15,7 @@
     "test:pageLoad": "node ./tests/pageLoad/pageLoad.test.js",
     "test:login": "node ./tests/login/login.test.js",
     "test:register": "node ./tests/register/register.test.js",
+    "test:activateUser": "node ./tests/activateUser/activateUser.test.js",
     "test:passwordReset": "node ./tests/passwordReset/passwordReset.test.js",
     "test:header": "node ./tests/header/header.test.js",
     "test:footer": "node ./tests/footer/footer.test.js",
