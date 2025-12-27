@@ -46,11 +46,23 @@ ethiofind/
 │   ├── businessDetailsNavigation/
 │   │   ├── businessDetailsNavigation.test.js  # Business details navigation
 │   │   └── testData.json
+│   ├── businessDetailsPageValidation/
+│   │   ├── businessDetailsPageValidation.test.js # Business details page content validation
+│   │   └── testData.json
+│   ├── loginThenContactBusiness/
+│   │   ├── loginThenContactBusiness.test.js # Login then contact business via form
+│   │   └── testData.json
 │   ├── addBusiness/
 │   │   ├── addBusiness.test.js   # Add business form validation
 │   │   └── testData.json
 │   ├── login/
-│   │   ├── login.test.js         # User login functionality
+│   │   ├── login.test.js         # Original login test (deprecated)
+│   │   └── testData.json
+│   ├── validEmailLogin/
+│   │   ├── validEmailLogin.test.js  # Valid email login functionality
+│   │   └── testData.json
+│   ├── invalidEmailLogin/
+│   │   ├── invalidEmailLogin.test.js  # Invalid email login scenarios
 │   │   └── testData.json
 │   ├── logout/
 │   │   ├── logout.test.js        # User logout functionality
@@ -92,6 +104,18 @@ ethiofind/
 │   └── search/
 │       ├── search.test.js        # Search functionality validation
 │       └── testData.json
+│   └── logoTest/
+│       ├── logoTest.test.js      # Logo loading validation
+│       └── testData.json
+│   └── searchFormTest/
+│       ├── searchFormTest.test.js # Search form loading validation
+│       └── testData.json
+│   └── addBusinessFormTest/
+│       ├── addBusinessFormTest.test.js # Add business form loading validation
+│       └── testData.json
+│   └── pageNotFoundTest/
+│       ├── pageNotFoundTest.test.js # 404 page error handling validation
+│       └── testData.json
 ├── pages/
 │   ├── PageLoadPage.js           # Page load testing utilities
 │   ├── BusinessListingPage.js    # Business listing interactions
@@ -118,8 +142,12 @@ ethiofind/
 │       ├── pageLoad/             # Page load test screenshots
 │       ├── businessListing/      # Business listing test screenshots
 │       ├── businessDetailsNavigation/  # Business details navigation screenshots
+│       ├── businessDetailsPageValidation/ # Business details page validation screenshots
+│       ├── loginThenContactBusiness/     # Login then contact business screenshots
 │       ├── addBusiness/          # Add business test screenshots
-│       ├── login/                # Login test screenshots
+│       ├── login/                # Original login test screenshots
+│       ├── validEmailLogin/      # Valid email login test screenshots
+│       ├── invalidEmailLogin/    # Invalid email login test screenshots
 │       ├── logout/              # Logout test screenshots
 │       ├── register/             # Register test screenshots
 │       ├── passwordReset/        # Password reset test screenshots
@@ -131,6 +159,7 @@ ethiofind/
 │       ├── categoriesPageLoad/   # Categories page load test screenshots
 │       ├── categoryNavigation/   # Category navigation test screenshots
 │       └── search/               # Search test screenshots
+│       └── pageNotFoundTest/     # Page not found test screenshots
 └── README.md                     # This documentation
 ```
 
@@ -145,11 +174,16 @@ Run specific tests using these npm commands:
 npm run test:pageLoad          # Page load performance and validation
 npm run test:businessListing   # Business listings API validation
 npm run test:businessDetailsNavigation  # Business details navigation
+npm run test:businessDetailsPageValidation # Business details page content validation
+npm run test:loginThenContactBusiness     # Login then contact business via form
 npm run test:addBusiness       # Add business form submission
+npm run test:addBusinessFormTest # Add business form loading validation
+npm run test:searchFormTest    # Search form loading validation
 npm run test:search            # Search functionality validation
 
 # Authentication tests
-npm run test:login             # User login functionality
+npm run test:validEmailLogin      # Valid email login functionality
+npm run test:invalidEmailLogin    # Invalid email login scenarios
 npm run test:logout            # User logout functionality
 npm run test:loginThenAddBusiness  # Combined login and add business test
 npm run test:loginThenCheckBusiness  # Login and check claimed business test
@@ -167,6 +201,8 @@ npm run test:about             # About page validation
 npm run test:categories        # Categories API content validation
 npm run test:categoriesPageLoad # Categories page load performance
 npm run test:categoryNavigation # Category navigation functionality
+npm run test:logoTest          # Logo loading validation
+npm run test:pageNotFoundTest   # 404 page error handling validation
 ```
 
 ### Run Complete Test Suite
@@ -182,19 +218,23 @@ This executes tests in the following order:
 1. Page Load Test
 2. Business Listing Test
 3. Business Details Navigation Test
-4. Add Business Test
-5. Login Test
-6. Logout Test
-7. Register Test
-8. Password Reset Test
-9. Header Test
-10. Footer Test
-11. Footer Links Test
-12. About Page Test
-13. Categories Page Load Test
-14. Categories Content Test
-15. Category Navigation Test
-16. Search Test
+4. Business Details Page Validation Test
+5. Login Then Contact Business Test
+6. Add Business Test
+7. Valid Email Login Test
+8. Invalid Email Login Test
+9. Logout Test
+10. Register Test
+11. Password Reset Test
+12. Header Test
+13. Footer Test
+14. Footer Links Test
+15. About Page Test
+16. Categories Page Load Test
+17. Categories Content Test
+18. Category Navigation Test
+19. Search Test
+20. Page Not Found Test
 
 ## Test Descriptions
 
@@ -209,6 +249,43 @@ This executes tests in the following order:
   - URL pattern validation for business details pages
   - Browser back navigation returns to home page
 - **Expected Results**: Successful navigation, content validation, and return navigation
+
+### Business Details Page Validation Test (`test:businessDetailsPageValidation`)
+
+- **Purpose**: Validates that all elements on the business details page load perfectly after clicking on a business listing from the home page
+- **URL**: `https://ethiofind.com/` (starts on home page, then navigates to business details)
+- **Test Cases**:
+  - Home page loads with business listings displayed
+  - Clicking on first business listing navigates to details page
+  - Main content container loads with proper structure
+  - Business title displays correctly
+  - Breadcrumb navigation is present
+  - Business details (City, Email, Phone, Address) are displayed
+  - Products and Services section with tags loads properly
+  - Website link is functional
+  - Business description is present
+  - Claim business link is available
+  - Business logo image loads successfully
+  - Contact form with all required fields (subject, message, submit) is present
+  - Similar businesses section displays recommended businesses
+  - All page elements are visible and properly formatted
+- **Expected Results**: Complete business details page loads with all content elements properly displayed and functional after navigation from home page
+
+### Login Then Contact Business Test (`test:loginThenContactBusiness`)
+
+- **Purpose**: Validates the complete user journey of logging in and contacting a business through their details page form
+- **URL**: `https://ethiofind.com/user/login` (starts with login, then navigates to home and business details)
+- **Test Cases**:
+  - User successfully logs in with valid credentials
+  - Home page loads with business listings after authentication
+  - Clicking on business listing navigates to details page
+  - Contact form is present on business details page
+  - Subject field accepts input and is filled correctly
+  - Message field accepts input and is filled with inquiry text
+  - Contact form submits successfully
+  - Success or error messages are displayed appropriately
+  - Form submission works for authenticated users
+- **Expected Results**: Authenticated user can successfully submit business inquiries through the contact form on business details pages
 
 ### Category Navigation Test (`test:categoryNavigation`)
 
@@ -233,6 +310,33 @@ This executes tests in the following order:
   - Success response handling
   - "Sign In" link navigation
 - **Expected Results**: Proper validation, error messages, and navigation
+
+### Valid Email Login Test (`test:validEmailLogin`)
+
+- **Purpose**: Validates successful user login with valid email credentials
+- **URL**: `https://ethiofind.com/user/login`
+- **Test Cases**:
+  - Login page loads correctly with form elements
+  - Fill valid email and password credentials
+  - Submit login form successfully
+  - Verify successful login indicators (dashboard, logout button, user menu)
+  - Check for proper redirection after login
+  - Ensure no error messages are displayed
+- **Expected Results**: Successful authentication, proper redirection, and user dashboard access
+
+### Invalid Email Login Test (`test:invalidEmailLogin`)
+
+- **Purpose**: Validates error handling for invalid login attempts with various invalid credentials
+- **URL**: `https://ethiofind.com/user/login`
+- **Test Cases**:
+  - Test invalid email/password combinations
+  - Test non-existent email addresses
+  - Test empty email fields
+  - Test invalid email format
+  - Verify appropriate error messages are displayed
+  - Ensure user remains on login page (no successful authentication)
+  - Check error message visibility and content
+- **Expected Results**: Proper error handling, appropriate error messages, and prevention of unauthorized access
 
 ### Logout Test (`test:logout`)
 
@@ -268,6 +372,64 @@ This executes tests in the following order:
   - Check for "no business claimed" messages
   - Verify page loads without errors
 - **Expected Results**: Successful login, page navigation, and clear determination of business claim status with appropriate screenshots
+
+### Logo Test (`test:logoTest`)
+
+- **Purpose**: Validates that the Ethiofind logo image loads properly on the homepage
+- **URL**: `https://ethiofind.com` (homepage)
+- **Test Cases**:
+  - Homepage loads successfully
+  - Logo image element exists in the DOM
+  - Logo image is visible and displayed
+  - Logo image source URL is correct
+  - Logo image loads without errors (not broken)
+  - Check for any page errors that might affect logo loading
+- **Expected Results**: Logo image loads successfully, is visible, and displays without errors
+
+### Search Form Test (`test:searchFormTest`)
+
+- **Purpose**: Validates that the search form loads properly on the homepage with all required elements
+- **URL**: `https://ethiofind.com` (homepage)
+- **Test Cases**:
+  - Homepage loads successfully
+  - Search form element exists in the DOM
+  - Search input field exists, is visible, and enabled
+  - Search submit button exists
+  - Form elements have proper attributes (type, name, placeholder)
+  - Input field accepts text input
+  - Check for any page errors that might affect search form functionality
+- **Expected Results**: Search form loads completely with functional input field and submit button
+
+### Add Business Form Test (`test:addBusinessFormTest`)
+
+- **Purpose**: Validates that the add business form loads properly on the homepage with all required form elements
+- **URL**: `https://ethiofind.com` (homepage)
+- **Test Cases**:
+  - Homepage loads successfully
+  - Scrolls to "Add Your Business Free" section
+  - Business name input field exists, is visible, and enabled
+  - Phone input field exists, is visible, and enabled
+  - City selection field exists
+  - Email input field exists, is visible, and enabled
+  - Business category selection field exists
+  - Submit button ("Add this Business") exists, is visible, and enabled
+  - Form elements accept input (interaction test)
+  - Check for any page errors that might affect add business form functionality
+- **Expected Results**: Add business form loads completely with all functional form elements
+
+### Page Not Found Test (`test:pageNotFoundTest`)
+
+- **Purpose**: Validates that accessing non-existent pages properly displays a 404 error page with appropriate content and navigation options
+- **URL**: `https://ethiofind.com/nonexistent-page` (invalid URL)
+- **Test Cases**:
+  - Attempt to access a non-existent page URL
+  - Verify page loads without critical errors
+  - Check for error page content indicators (404, "Page Not Found", etc.)
+  - Look for error page styling or specific error elements
+  - Verify navigation options are present (home link, back button, etc.)
+  - Check that error page itself doesn't have additional errors
+  - Validate URL handling and potential redirects
+- **Expected Results**: Proper 404 error page display with clear error messaging, appropriate styling, and navigation options for user recovery
 
 ### Other Key Tests
 

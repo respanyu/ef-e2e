@@ -1,0 +1,20 @@
+{
+  "url": "https://ethiofind.com/user/login",
+  "email": "bereket21bnm@gmail.com",
+  "password": "Surafel55",
+  "expectedSuccessIndicators": [
+    "dashboard",
+    "logout",
+    "profile",
+    "welcome",
+    "my account"
+  ],
+  "successSelectors": [
+    ".dashboard",
+    ".logout",
+    ".profile",
+    "[href*='logout']",
+    "[href*='dashboard']",
+    ".user-menu"
+  ]
+}

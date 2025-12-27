@@ -1,0 +1,10 @@
+{
+  "url": "https://ethiofind.com",
+  "addBusinessSectionSelector": "//*[contains(text(),'Add Your Business Free')]",
+  "businessNameSelector": "input[name='business']",
+  "phoneSelector": "input[name='phone']",
+  "citySelector": "select[name='category'], input[name='category']",
+  "emailSelector": "input[name='email']",
+  "categorySelector": "select[name='category'], input[name='category']",
+  "submitButtonSelector": "//button[contains(text(),'Add this Business')]"
+}

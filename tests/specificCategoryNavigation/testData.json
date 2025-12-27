@@ -1,0 +1,30 @@
+{
+  "categoriesUrl": "https://ethiofind.com/categories",
+  "targetCategory": "Agriculture & Farming",
+  "expectedCategoryUrl": "agriculture-farming",
+  "targetSubcategory": "Food & Beverage",
+  "expectedSubcategoryUrl": "food-beverage",
+  "timeout": 10000,
+  "selectors": {
+    "categoryList": ".column.is-one-third, .category-card, [class*='category'], .p-3",
+    "categoryLink": ".column.is-one-third a, .category-card a, [class*='category'] a, .p-3 a, a[href*='category']",
+    "categoryName": ".category-title, .category-name, h3, h4, .title, [class*='name']",
+    "categoryPageTitle": "h1, .category-title, .page-title, [class*='title'], .hero-body h1, .title.is-1",
+    "categoryContent": ".category-content, .business-list, .businesses, [class*='business'], .content",
+    "businessListings": ".business-card, .business-item, a[href*='/business/']",
+    "subcategoryList": ".subcategory, .sub-category, [class*='sub'], .tag, .badge, a[href*='subcategory']",
+    "subcategoryLink": ".subcategory a, .sub-category a, [class*='sub'] a, .tag a, .badge a",
+    "categorySubtitle": "p.subtitle.is-6",
+    "categoryLabel": "p.subtitle.is-6"
+  },
+  "expectedContent": {
+    "categoryPageIndicators": ["category", "businesses", "listings", "results"],
+    "subcategoryPageIndicators": [
+      "subcategory",
+      "businesses",
+      "listings",
+      "results"
+    ],
+    "detailPageContent": ["business", "category", "details", "contact"]
+  }
+}

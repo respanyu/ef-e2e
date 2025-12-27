@@ -1,0 +1,54 @@
+{
+  "homeUrl": "https://ethiofind.com/",
+  "loginUrl": "https://ethiofind.com/user/login",
+  "loginCredentials": {
+    "email": "bereket21bnm@gmail.com",
+    "password": "Surafel55"
+  },
+  "searchKeyword": "restaurant",
+  "searchCity": "Addis Ababa",
+  "contactFormData": {
+    "subject": "Inquiry about your restaurant services",
+    "message": "Hello, I am interested in learning more about your restaurant. Could you please provide more details about your menu offerings, pricing, and reservation options? Thank you for your assistance."
+  },
+  "timeout": 10000,
+  "selectors": {
+    "searchForm": "form[action*='search']",
+    "keywordInput": "input[name='keyword']",
+    "cityInput": "input[name='city']",
+    "submitButton": "button[type='submit'], button:contains('Find'), input[type='submit']",
+    "searchResults": ".search-result, .business-card, .business-listing, [class*='result'], [class*='business']",
+    "restaurantLink": "a[href*='restaurant'], a[href*='business']",
+    "businessDetailTitle": "h1, .business-title, .business-name, [class*='title']",
+    "businessDetailContent": ".business-details, .business-info, .content",
+    "contactForm": "form[method='POST']",
+    "contactSubject": "input[name='subject']",
+    "contactMessage": "textarea[name='message']",
+    "contactSubmit": ".button.is-link",
+    "notification": ".notification, .alert, .message, .notification.is-success, .notification.is-danger, .notification.is-info, .alert-success, .alert-danger, .alert-info",
+    "successMessage": ".notification.is-success, .alert-success, .success-message, .notification.is-info:not(:contains('Invalid'))",
+    "errorMessage": ".notification.is-danger, .alert-danger, .error-message, .notification.is-info",
+    "validationErrors": ".invalid-feedback, .field-error, .error",
+    "formFields": ".field"
+  },
+  "expectedContent": {
+    "searchResultsPage": ["search results", "found", "restaurants"],
+    "businessDetailPage": ["restaurant", "business", "details", "contact"],
+    "successIndicators": [
+      "message sent",
+      "thank you",
+      "successfully sent",
+      "inquiry submitted",
+      "sent successfully",
+      "your message has been sent",
+      "contact form submitted"
+    ],
+    "errorIndicators": [
+      "invalid email",
+      "error",
+      "failed",
+      "please fill",
+      "required field"
+    ]
+  }
+}

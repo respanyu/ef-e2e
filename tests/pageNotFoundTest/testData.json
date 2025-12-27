@@ -1,0 +1,34 @@
+{
+  "invalidUrl": "https://ethiofind.com/non-existent-page-12345",
+  "expectedRedirectUrl": "https://ethiofind.com/error",
+  "expectedStatus": 404,
+  "errorSelectors": [
+    ".error-page",
+    ".404",
+    ".not-found",
+    "[class*='error']",
+    "[class*='404']",
+    "[class*='not-found']",
+    ".error-message",
+    ".redirect-error"
+  ],
+  "errorTextIndicators": [
+    "404",
+    "not found",
+    "page not found",
+    "error",
+    "sorry",
+    "too many times",
+    "redirected you too many times",
+    "ERR_TOO_MANY_REDIRECTS"
+  ],
+  "navigationSelectors": [
+    "a[href='/']",
+    "a[href*='home']",
+    "a[href*='ethiofind.com']",
+    ".home-link",
+    ".back-home",
+    ".reload",
+    "a[href*='reload']"
+  ]
+}

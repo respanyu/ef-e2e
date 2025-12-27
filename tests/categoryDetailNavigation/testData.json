@@ -1,0 +1,15 @@
+{
+  "categoriesUrl": "https://ethiofind.com/categories",
+  "timeout": 10000,
+  "selectors": {
+    "categoryList": ".column.is-one-third, .category-card, [class*='category'], .p-3",
+    "categoryLink": ".column.is-one-third a, .category-card a, [class*='category'] a, .p-3 a, a[href*='category']",
+    "categoryPageTitle": "h1, .category-title, .page-title, [class*='title'], .hero-body h1, .title.is-1",
+    "categoryContent": ".category-content, .business-list, .businesses, [class*='business'], .content",
+    "businessListings": ".business-card, .business-item, a[href*='/business/']"
+  },
+  "expectedContent": {
+    "categoryPageIndicators": ["category", "businesses", "listings", "results"],
+    "detailPageContent": ["business", "category", "details", "contact"]
+  }
+}

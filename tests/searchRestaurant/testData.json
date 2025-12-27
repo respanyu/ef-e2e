@@ -1,0 +1,20 @@
+{
+  "url": "https://ethiofind.com",
+  "searchKeyword": "restaurant",
+  "searchCity": "Addis Ababa",
+  "timeout": 10000,
+  "selectors": {
+    "searchForm": "form[action*='search']",
+    "keywordInput": "input[name='keyword']",
+    "cityInput": "input[name='city']",
+    "submitButton": "button[type='submit'], button:contains('Find'), input[type='submit']",
+    "searchResults": ".search-result, .business-card, .business-listing, [class*='result'], [class*='business']",
+    "restaurantLink": "a[href*='restaurant'], a[href*='business']",
+    "businessDetailTitle": "h1, .business-title, .business-name, [class*='title']",
+    "businessDetailContent": ".business-details, .business-info, .content"
+  },
+  "expectedContent": {
+    "searchResultsPage": ["search results", "found", "restaurants"],
+    "businessDetailPage": ["restaurant", "business", "details", "contact"]
+  }
+}

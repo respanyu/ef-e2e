@@ -1,0 +1,43 @@
+{
+  "homeUrl": "https://ethiofind.com/",
+  "loginUrl": "https://ethiofind.com/user/login",
+  "loginCredentials": {
+    "email": "bereket21bnm@gmail.com",
+    "password": "Surafel55"
+  },
+  "contactFormData": {
+    "subject": "Inquiry about your agricultural services",
+    "message": "Hello, I am interested in learning more about your agricultural machinery and farming services. Could you please provide more details about your tractor offerings and mechanization services? Thank you."
+  },
+  "timeout": 10000,
+  "selectors": {
+    "businessListings": ".business-card, .business-item, a[href*='/business/']",
+    "contactForm": "form[method='POST']",
+    "contactSubject": "input[name='subject']",
+    "contactMessage": "textarea[name='message']",
+    "contactSubmit": ".button.is-link",
+    "notification": ".notification, .alert, .message, .notification.is-success, .notification.is-danger, .notification.is-info, .alert-success, .alert-danger, .alert-info",
+    "successMessage": ".notification.is-success, .alert-success, .success-message, .notification.is-info:not(:contains('Invalid'))",
+    "errorMessage": ".notification.is-danger, .alert-danger, .error-message, .notification.is-info",
+    "validationErrors": ".invalid-feedback, .field-error, .error",
+    "formFields": ".field"
+  },
+  "expectedContent": {
+    "successIndicators": [
+      "message sent",
+      "thank you",
+      "successfully sent",
+      "inquiry submitted",
+      "sent successfully",
+      "your message has been sent",
+      "contact form submitted"
+    ],
+    "errorIndicators": [
+      "invalid email",
+      "error",
+      "failed",
+      "please fill",
+      "required field"
+    ]
+  }
+}

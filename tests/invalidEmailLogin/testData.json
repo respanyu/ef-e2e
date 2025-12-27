@@ -1,0 +1,32 @@
+{
+  "url": "https://ethiofind.com/user/login",
+  "invalidCredentials": [
+    {
+      "email": "invalid@example.com",
+      "password": "wrongpassword",
+      "expectedError": "Invalid email or password"
+    },
+    {
+      "email": "nonexistent@domain.com",
+      "password": "test123",
+      "expectedError": "Invalid email or password"
+    },
+    {
+      "email": "",
+      "password": "password123",
+      "expectedError": "Please fill out this field"
+    },
+    {
+      "email": "invalid-email-format",
+      "password": "password123",
+      "expectedError": "Please include an '@' in the email address"
+    }
+  ],
+  "errorSelectors": [
+    ".error-message",
+    ".alert-danger",
+    ".invalid-feedback",
+    "[class*='error']",
+    ".form-error"
+  ]
+}

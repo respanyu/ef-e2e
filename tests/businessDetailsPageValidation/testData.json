@@ -1,0 +1,31 @@
+{
+  "homeUrl": "https://ethiofind.com/",
+  "timeout": 10000,
+  "selectors": {
+    "businessListings": ".business-card, .business-item, a[href*='/business/']",
+    "mainContent": ".column.is-10.main-content",
+    "businessTitle": ".title.is-4",
+    "breadcrumb": ".breadcrumb",
+    "city": "strong:contains('City:')",
+    "email": "strong:contains('Email:')",
+    "phone": "strong:contains('Phone:')",
+    "address": "strong:contains('Address:')",
+    "productsServices": "strong:contains('Products and Services:')",
+    "productTags": ".tag-button",
+    "website": "strong:contains('Website:')",
+    "websiteLink": "a[href*='http']",
+    "description": "strong:contains('Description:')",
+    "claimBusiness": "a[href*='claim']",
+    "businessLogo": ".column.is-3 img, img[alt*='logo']",
+    "contactForm": "form[method='POST']",
+    "contactSubject": "input[name='subject']",
+    "contactMessage": "textarea[name='message']",
+    "contactSubmit": ".button.is-link",
+    "similarBusinesses": ".title.is-6:contains('Similar Businesses')",
+    "similarBusinessCards": ".columns.is-multiline .column.is-4"
+  },
+  "expectedContent": {
+    "minProductTags": 3,
+    "minSimilarBusinesses": 1
+  }
+}

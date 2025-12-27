@@ -1,0 +1,7 @@
+{
+  "url": "https://ethiofind.com",
+  "searchFormSelector": "form, .search-form, .search, [class*='search']",
+  "searchInputSelector": "input[type='text'], input[type='search'], input[name*='search'], input[name*='q'], input[name*='query'], input[placeholder*='search'], input[placeholder*='find'], input[placeholder*='business'], .search-input",
+  "searchButtonSelector": "button, input[type='submit'], .btn, .search-btn, [class*='search'], [type='submit']",
+  "searchPlaceholder": "Search for businesses..."
+}

@@ -1,0 +1,5 @@
+{
+  "url": "https://ethiofind.com",
+  "logoSelector": "img[src*='logo.png']",
+  "logoSrc": "https://ethiofind.com/assets/img/logo.png"
+}
