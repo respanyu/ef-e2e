@@ -1,0 +1,44 @@
+{
+  "url": "https://ethiofind.com",
+  "timeout": 10000,
+  "selectors": {
+    "header": "header, nav, .navbar, .navigation",
+    "navLinks": "header a, nav a, .navbar a, .navigation a",
+    "logo": ".logo, header img, [class*='logo']",
+    "menuItems": ".menu-item, .nav-item, li a",
+    "dropdowns": ".dropdown, .dropdown-menu, [class*='dropdown']"
+  },
+  "expectedNavigations": {
+    "home": {
+      "text": "Home",
+      "url": "https://ethiofind.com",
+      "contains": "/"
+    },
+    "categories": {
+      "text": "Categories",
+      "url": "https://ethiofind.com/categories",
+      "contains": "/categories"
+    },
+    "about": {
+      "text": "About",
+      "url": "https://ethiofind.com/about",
+      "contains": "/about"
+    },
+    "contact": {
+      "text": "Contact",
+      "url": "https://ethiofind.com/contact",
+      "contains": "/contact"
+    },
+    "login": {
+      "text": "Login",
+      "url": "https://ethiofind.com/user/login",
+      "contains": "/login"
+    },
+    "register": {
+      "text": "Register",
+      "url": "https://ethiofind.com/user/register",
+      "contains": "/register"
+    }
+  },
+  "excludePatterns": ["#", "javascript:", "mailto:", "tel:"]
+}

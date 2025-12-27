@@ -18,6 +18,10 @@ function logSuccess(message) {
   console.log(`🎉 ${message}`);
 }
 
+function logInfo(message) {
+  console.log(`ℹ️  ${message}`);
+}
+
 function logStart(message) {
   console.log(`🚀 ${message}`);
 }
@@ -34,4 +38,5 @@ module.exports = {
   logSuccess,
   logStart,
   logScreenshot,
+  logInfo,
 };

@@ -1,0 +1,26 @@
+{
+  "loginUrl": "https://ethiofind.com/user/login",
+  "profileEditUrl": "https://ethiofind.com/user/profile/edit",
+  "loginCredentials": {
+    "email": "bereket21bnm@gmail.com",
+    "password": "Surafel55"
+  },
+  "expectedTitle": "Edit Profile",
+  "maxLoadTime": 10000,
+  "selectors": {
+    "pageContent": ".container, .content, main",
+    "formElements": "form, input, textarea, select, button",
+    "profileForm": "form[action*='profile'], form[method='POST']",
+    "saveButton": "button[type='submit'], input[type='submit'], .button",
+    "profileFields": "input[name], textarea[name], select[name]",
+    "navigation": ".navbar, nav, header",
+    "userMenu": ".user-menu, .dropdown, [class*='user']",
+    "emailInput": "input[name='email'], input[type='email']",
+    "passwordInput": "input[name='password'], input[type='password']",
+    "loginButton": "button[type='submit'], input[type='submit'], .button"
+  },
+  "expectedContent": {
+    "pageIndicators": ["profile", "edit", "update", "save"],
+    "formIndicators": ["name", "email", "phone", "address"]
+  }
+}

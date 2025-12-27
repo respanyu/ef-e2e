@@ -1,0 +1,24 @@
+{
+  "profileUrl": "https://ethiofind.com/user/profile",
+  "loginUrl": "https://ethiofind.com/user/login",
+  "expectedRedirectUrl": "https://ethiofind.com/user/login",
+  "maxLoadTime": 10000,
+  "selectors": {
+    "loginForm": "form[action*='login'], form[method='POST']",
+    "emailInput": "input[name='email'], input[type='email']",
+    "passwordInput": "input[name='password'], input[type='password']",
+    "loginButton": "button[type='submit'], input[type='submit']",
+    "errorMessage": ".error, .alert-danger, .message-error, [class*='error']",
+    "accessDenied": "[class*='denied'], [class*='forbidden'], [class*='unauthorized']",
+    "pageContent": ".container, .content, main",
+    "navigation": ".navbar, nav, header"
+  },
+  "expectedErrorMessages": [
+    "access denied",
+    "unauthorized",
+    "please login",
+    "login required",
+    "authentication required",
+    "forbidden"
+  ]
+}
