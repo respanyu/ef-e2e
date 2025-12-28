@@ -1,0 +1,34 @@
+{
+  "loginUrl": "https://ethiofind.com/user/login",
+  "profileUrl": "https://ethiofind.com/user/profile/edit",
+  "businessListUrl": "https://ethiofind.com/",
+  "loginCredentials": {
+    "email": "tester@ethiofind.com",
+    "password": "TestPassword123"
+  },
+  "timeout": 10000,
+  "selectors": {
+    "deleteAccountButton": [
+      "button:contains('Delete Account')",
+      "button:contains('Delete')",
+      "a:contains('Delete Account')",
+      "a:contains('Delete')",
+      ".delete-account",
+      "#delete-account",
+      "[class*='delete']",
+      "button[class*='delete']",
+      "a[class*='delete']",
+      ".btn-danger",
+      ".button-danger"
+    ],
+    "confirmationDialog": ".modal, .dialog, .confirm, .alert",
+    "confirmButton": "button:contains('Yes'), button:contains('Confirm'), button:contains('Delete'), .confirm-yes",
+    "successMessage": "[class*='success'], [class*='message']",
+    "errorMessage": "[class*='error'], [class*='danger'], [class*='alert']"
+  },
+  "expectedResults": {
+    "deleteButtonExists": true,
+    "confirmationRequired": true,
+    "redirectAfterDelete": true
+  }
+}

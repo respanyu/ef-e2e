@@ -50,7 +50,12 @@
     "test:passwordResetKeyboardSubmit": "node ./tests/passwordResetKeyboardSubmit/passwordResetKeyboardSubmit.test.js",
     "test:categoryPagination": "node ./tests/categoryPagination/categoryPagination.test.js",
     "test:similarBusinessNavigation": "node ./tests/similarBusinessNavigation/similarBusinessNavigation.test.js",
-    "test:unauthenticatedContactForm": "node ./tests/unauthenticatedContactForm/unauthenticatedContactForm.test.js"
+    "test:unauthenticatedContactForm": "node ./tests/unauthenticatedContactForm/unauthenticatedContactForm.test.js",
+    "test:sqlInjectionSearch": "node ./tests/sqlInjectionSearch/sqlInjectionSearch.test.js",
+    "test:loginThenDeleteAccount": "node ./tests/loginThenDeleteAccount/loginThenDeleteAccount.test.js",
+    "test:checkDeleteAccountButtonPresence": "node ./tests/checkDeleteAccountButtonPresence/checkDeleteAccountButtonPresence.test.js",
+    "test:claimBusinessFromList": "node ./tests/claimBusinessFromList/claimBusinessFromList.test.js",
+    "test:editBusinessInfo": "node ./tests/editBusinessInfo/editBusinessInfo.test.js"
   },
   "keywords": [],
   "author": "",

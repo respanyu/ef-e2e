@@ -142,6 +142,21 @@ ethiofind/
 │   ├── similarBusinessNavigation/
 │   │   ├── similarBusinessNavigation.test.js # Similar business navigation test
 │   │   └── testData.json
+│   ├── sqlInjectionSearch/
+│   │   ├── sqlInjectionSearch.test.js # SQL injection security test for search form
+│   │   └── testData.json
+│   ├── loginThenDeleteAccount/
+│   │   ├── loginThenDeleteAccount.test.js # Login then account deletion test
+│   │   └── testData.json
+│   ├── checkDeleteAccountButtonPresence/
+│   │   ├── checkDeleteAccountButtonPresence.test.js # Check delete account button presence
+│   │   └── testData.json
+│   ├── claimBusinessFromList/
+│   │   ├── claimBusinessFromList.test.js # Claim business from list test
+│   │   └── testData.json
+│   ├── editBusinessInfo/
+│   │   ├── editBusinessInfo.test.js # Edit business info test
+│   │   └── testData.json
 │   └── pageNotFoundTest/
 │       ├── pageNotFoundTest.test.js # 404 page error handling validation
 │       └── testData.json
@@ -252,6 +267,11 @@ npm run test:categoriesPageLoad # Categories page load performance
 npm run test:categoryNavigation # Category navigation functionality
 npm run test:logoTest          # Logo loading validation
 npm run test:unauthenticatedContactForm # Contact form access control for unauthenticated users
+npm run test:sqlInjectionSearch # SQL injection security test for search form
+npm run test:loginThenDeleteAccount # Login then account deletion test
+npm run test:checkDeleteAccountButtonPresence # Check delete account button presence
+npm run test:claimBusinessFromList # Claim business from list test
+npm run test:editBusinessInfo # Edit business info test
 npm run test:pageNotFoundTest   # 404 page error handling validation
 ```
 
@@ -289,7 +309,9 @@ This executes tests in the following order:
 22. Category Navigation Test
 23. Search Test
 24. Unauthenticated Contact Form Test
-25. Page Not Found Test
+25. SQL Injection Search Test
+26. Login Then Delete Account Test
+27. Page Not Found Test
 
 ## Test Descriptions
 
@@ -612,6 +634,82 @@ This executes tests in the following order:
   - Verify that the submit button is disabled or hidden for unauthenticated users
   - Capture screenshots of the contact form state for unauthenticated users
 - **Expected Results**: Contact form fields are properly disabled/readonly for unauthenticated users, preventing unauthorized form submissions and maintaining security
+
+### SQL Injection Search Test (`test:sqlInjectionSearch`)
+
+- **Purpose**: Tests security against SQL injection attacks on the search form fields (keyword and city)
+- **URL**: `https://ethiofind.com` (home page with search form)
+- **Test Cases**:
+  - Attempt SQL injection payloads in keyword field with normal city value
+  - Attempt SQL injection payloads in city field with normal keyword value
+  - Test combined SQL injection in both keyword and city fields simultaneously
+  - Verify that injection attempts do not cause server errors or unexpected behavior
+  - Check for proper input validation and sanitization
+  - Capture screenshots for each injection attempt and result
+- **Expected Results**: All SQL injection attempts are handled safely without causing database errors, server crashes, or security breaches
+
+### Login Then Delete Account Test (`test:loginThenDeleteAccount`)
+
+- **Purpose**: Tests the complete account deletion workflow by logging in and attempting to delete the user account
+- **URL**: `https://ethiofind.com/user/login` (starts with login, then navigates to profile)
+- **Test Cases**:
+  - Login with valid user credentials
+  - Navigate to user profile page
+  - Locate and click the delete account button
+  - Handle any confirmation dialogs that appear
+  - Verify account deletion success or failure
+  - Check for appropriate success/error messages
+  - Validate post-deletion redirects or page changes
+  - Capture screenshots throughout the deletion process
+- **Expected Results**: Account deletion functionality works correctly with proper confirmation flows and user feedback
+
+### Check Delete Account Button Presence Test (`test:checkDeleteAccountButtonPresence`)
+
+- **Purpose**: Verifies that the delete account button is present and accessible on the user profile page
+- **URL**: `https://ethiofind.com/user/login` (starts with login, then navigates to profile)
+- **Test Cases**:
+  - Login with valid user credentials
+  - Navigate to user profile page
+  - Search for delete account button using multiple selector strategies
+  - Verify button is visible and clickable
+  - Check button text/content matches expected values
+  - Validate button positioning and accessibility
+  - Capture screenshots of button location
+  - List all available buttons/links if delete button not found
+- **Expected Results**: Delete account button is successfully located and accessible on the profile page
+
+### Claim Business From List Test (`test:claimBusinessFromList`)
+
+- **Purpose**: Tests the complete business claiming workflow by logging in, navigating to business listings, clicking on a business, and claiming it with confirmation
+- **URL**: `https://ethiofind.com/user/login` (starts with login, then navigates to business list)
+- **Test Cases**:
+  - Login with valid user credentials
+  - Navigate to business listing page
+  - Click on the first available business
+  - Verify business details page loads
+  - Locate and click the claim business button/link
+  - Handle confirmation dialog by clicking "Yes"
+  - Wait for claim process to complete
+  - Verify successful business claiming or appropriate error handling
+  - Check for success messages or redirects to business management
+  - Capture screenshots throughout the claiming process
+- **Expected Results**: Business claiming functionality works correctly with proper user authentication, navigation, confirmation flows, and success feedback
+
+### Edit Business Info Test (`test:editBusinessInfo`)
+
+- **Purpose**: Tests the business information editing functionality by logging in and updating business details
+- **URL**: `https://ethiofind.com/user/login` (starts with login, then navigates to business edit page)
+- **Test Cases**:
+  - Login with valid user credentials
+  - Navigate to business edit info page
+  - Verify business edit page loads with existing business information
+  - Fill out business update form with new data (company name, description, phone, email, address, **category**)
+  - Submit the business update form
+  - **Wait for API response completion** (loading indicators disappear, success/error messages)
+  - Verify update success or handle validation errors
+  - Check for appropriate success messages or error handling
+  - Capture screenshots throughout the editing process
+- **Expected Results**: Business information editing works correctly with proper form validation, data persistence, and user feedback
 
 ### Page Not Found Test (`test:pageNotFoundTest`)
 

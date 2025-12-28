@@ -1541,27 +1541,27 @@ exec(`node ${pageLoadTestPath}`, (error, stdout, stderr) => {
                                                                                                                                                                       stdout11_12
                                                                                                                                                                     );
 
-                                                                                                                                                                    // Run the page not found test
-                                                                                                                                                                    const pageNotFoundTestPath =
+                                                                                                                                                                    // Run the sql injection search test
+                                                                                                                                                                    const sqlInjectionSearchTestPath =
                                                                                                                                                                       path.join(
                                                                                                                                                                         __dirname,
                                                                                                                                                                         "tests",
-                                                                                                                                                                        "pageNotFoundTest",
-                                                                                                                                                                        "pageNotFoundTest.test.js"
+                                                                                                                                                                        "sqlInjectionSearch",
+                                                                                                                                                                        "sqlInjectionSearch.test.js"
                                                                                                                                                                       );
 
                                                                                                                                                                     exec(
-                                                                                                                                                                      `node ${pageNotFoundTestPath}`,
+                                                                                                                                                                      `node ${sqlInjectionSearchTestPath}`,
                                                                                                                                                                       (
-                                                                                                                                                                        error12,
-                                                                                                                                                                        stdout12,
-                                                                                                                                                                        stderr12
+                                                                                                                                                                        error11_13,
+                                                                                                                                                                        stdout11_13,
+                                                                                                                                                                        stderr11_13
                                                                                                                                                                       ) => {
                                                                                                                                                                         if (
-                                                                                                                                                                          error12
+                                                                                                                                                                          error11_13
                                                                                                                                                                         ) {
                                                                                                                                                                           console.error(
-                                                                                                                                                                            `❌ Page Not Found Test failed: ${error12.message}`
+                                                                                                                                                                            `❌ SQL Injection Search Test failed: ${error11_13.message}`
                                                                                                                                                                           );
                                                                                                                                                                           process.exit(
                                                                                                                                                                             1
@@ -1569,10 +1569,10 @@ exec(`node ${pageLoadTestPath}`, (error, stdout, stderr) => {
                                                                                                                                                                         }
 
                                                                                                                                                                         if (
-                                                                                                                                                                          stderr12
+                                                                                                                                                                          stderr11_13
                                                                                                                                                                         ) {
                                                                                                                                                                           console.error(
-                                                                                                                                                                            `❌ Page Not Found Test stderr: ${stderr12}`
+                                                                                                                                                                            `❌ SQL Injection Search Test stderr: ${stderr11_13}`
                                                                                                                                                                           );
                                                                                                                                                                           process.exit(
                                                                                                                                                                             1
@@ -1580,30 +1580,30 @@ exec(`node ${pageLoadTestPath}`, (error, stdout, stderr) => {
                                                                                                                                                                         }
 
                                                                                                                                                                         console.log(
-                                                                                                                                                                          stdout12
+                                                                                                                                                                          stdout11_13
                                                                                                                                                                         );
 
-                                                                                                                                                                        // Run the user profile page load test
-                                                                                                                                                                        const userProfilePageLoadTestPath =
+                                                                                                                                                                        // Run the login then delete account test
+                                                                                                                                                                        const loginThenDeleteAccountTestPath =
                                                                                                                                                                           path.join(
                                                                                                                                                                             __dirname,
                                                                                                                                                                             "tests",
-                                                                                                                                                                            "userProfilePageLoad",
-                                                                                                                                                                            "userProfilePageLoad.test.js"
+                                                                                                                                                                            "loginThenDeleteAccount",
+                                                                                                                                                                            "loginThenDeleteAccount.test.js"
                                                                                                                                                                           );
 
                                                                                                                                                                         exec(
-                                                                                                                                                                          `node ${userProfilePageLoadTestPath}`,
+                                                                                                                                                                          `node ${loginThenDeleteAccountTestPath}`,
                                                                                                                                                                           (
-                                                                                                                                                                            error13,
-                                                                                                                                                                            stdout13,
-                                                                                                                                                                            stderr13
+                                                                                                                                                                            error11_14,
+                                                                                                                                                                            stdout11_14,
+                                                                                                                                                                            stderr11_14
                                                                                                                                                                           ) => {
                                                                                                                                                                             if (
-                                                                                                                                                                              error13
+                                                                                                                                                                              error11_14
                                                                                                                                                                             ) {
                                                                                                                                                                               console.error(
-                                                                                                                                                                                `❌ User Profile Page Load Test failed: ${error13.message}`
+                                                                                                                                                                                `❌ Login Then Delete Account Test failed: ${error11_14.message}`
                                                                                                                                                                               );
                                                                                                                                                                               process.exit(
                                                                                                                                                                                 1
@@ -1611,10 +1611,10 @@ exec(`node ${pageLoadTestPath}`, (error, stdout, stderr) => {
                                                                                                                                                                             }
 
                                                                                                                                                                             if (
-                                                                                                                                                                              stderr13
+                                                                                                                                                                              stderr11_14
                                                                                                                                                                             ) {
                                                                                                                                                                               console.error(
-                                                                                                                                                                                `❌ User Profile Page Load Test stderr: ${stderr13}`
+                                                                                                                                                                                `❌ Login Then Delete Account Test stderr: ${stderr11_14}`
                                                                                                                                                                               );
                                                                                                                                                                               process.exit(
                                                                                                                                                                                 1
@@ -1622,30 +1622,30 @@ exec(`node ${pageLoadTestPath}`, (error, stdout, stderr) => {
                                                                                                                                                                             }
 
                                                                                                                                                                             console.log(
-                                                                                                                                                                              stdout13
+                                                                                                                                                                              stdout11_14
                                                                                                                                                                             );
 
-                                                                                                                                                                            // Run the unauthenticated profile access test
-                                                                                                                                                                            const unauthenticatedProfileAccessTestPath =
+                                                                                                                                                                            // Run the check delete account button presence test
+                                                                                                                                                                            const checkDeleteAccountButtonPresenceTestPath =
                                                                                                                                                                               path.join(
                                                                                                                                                                                 __dirname,
                                                                                                                                                                                 "tests",
-                                                                                                                                                                                "unauthenticatedProfileAccess",
-                                                                                                                                                                                "unauthenticatedProfileAccess.test.js"
+                                                                                                                                                                                "checkDeleteAccountButtonPresence",
+                                                                                                                                                                                "checkDeleteAccountButtonPresence.test.js"
                                                                                                                                                                               );
 
                                                                                                                                                                             exec(
-                                                                                                                                                                              `node ${unauthenticatedProfileAccessTestPath}`,
+                                                                                                                                                                              `node ${checkDeleteAccountButtonPresenceTestPath}`,
                                                                                                                                                                               (
-                                                                                                                                                                                error14,
-                                                                                                                                                                                stdout14,
-                                                                                                                                                                                stderr14
+                                                                                                                                                                                error11_15,
+                                                                                                                                                                                stdout11_15,
+                                                                                                                                                                                stderr11_15
                                                                                                                                                                               ) => {
                                                                                                                                                                                 if (
-                                                                                                                                                                                  error14
+                                                                                                                                                                                  error11_15
                                                                                                                                                                                 ) {
                                                                                                                                                                                   console.error(
-                                                                                                                                                                                    `❌ Unauthenticated Profile Access Test failed: ${error14.message}`
+                                                                                                                                                                                    `❌ Check Delete Account Button Presence Test failed: ${error11_15.message}`
                                                                                                                                                                                   );
                                                                                                                                                                                   process.exit(
                                                                                                                                                                                     1
@@ -1653,10 +1653,10 @@ exec(`node ${pageLoadTestPath}`, (error, stdout, stderr) => {
                                                                                                                                                                                 }
 
                                                                                                                                                                                 if (
-                                                                                                                                                                                  stderr14
+                                                                                                                                                                                  stderr11_15
                                                                                                                                                                                 ) {
                                                                                                                                                                                   console.error(
-                                                                                                                                                                                    `❌ Unauthenticated Profile Access Test stderr: ${stderr14}`
+                                                                                                                                                                                    `❌ Check Delete Account Button Presence Test stderr: ${stderr11_15}`
                                                                                                                                                                                   );
                                                                                                                                                                                   process.exit(
                                                                                                                                                                                     1
@@ -1664,10 +1664,230 @@ exec(`node ${pageLoadTestPath}`, (error, stdout, stderr) => {
                                                                                                                                                                                 }
 
                                                                                                                                                                                 console.log(
-                                                                                                                                                                                  stdout14
+                                                                                                                                                                                  stdout11_15
                                                                                                                                                                                 );
-                                                                                                                                                                                console.log(
-                                                                                                                                                                                  "\n🎉 All tests completed successfully!"
+
+                                                                                                                                                                                // Run the claim business from list test
+                                                                                                                                                                                const claimBusinessFromListTestPath =
+                                                                                                                                                                                  path.join(
+                                                                                                                                                                                    __dirname,
+                                                                                                                                                                                    "tests",
+                                                                                                                                                                                    "claimBusinessFromList",
+                                                                                                                                                                                    "claimBusinessFromList.test.js"
+                                                                                                                                                                                  );
+
+                                                                                                                                                                                exec(
+                                                                                                                                                                                  `node ${claimBusinessFromListTestPath}`,
+                                                                                                                                                                                  (
+                                                                                                                                                                                    error11_16,
+                                                                                                                                                                                    stdout11_16,
+                                                                                                                                                                                    stderr11_16
+                                                                                                                                                                                  ) => {
+                                                                                                                                                                                    if (
+                                                                                                                                                                                      error11_16
+                                                                                                                                                                                    ) {
+                                                                                                                                                                                      console.error(
+                                                                                                                                                                                        `❌ Claim Business From List Test failed: ${error11_16.message}`
+                                                                                                                                                                                      );
+                                                                                                                                                                                      process.exit(
+                                                                                                                                                                                        1
+                                                                                                                                                                                      );
+                                                                                                                                                                                    }
+
+                                                                                                                                                                                    if (
+                                                                                                                                                                                      stderr11_16
+                                                                                                                                                                                    ) {
+                                                                                                                                                                                      console.error(
+                                                                                                                                                                                        `❌ Claim Business From List Test stderr: ${stderr11_16}`
+                                                                                                                                                                                      );
+                                                                                                                                                                                      process.exit(
+                                                                                                                                                                                        1
+                                                                                                                                                                                      );
+                                                                                                                                                                                    }
+
+                                                                                                                                                                                    console.log(
+                                                                                                                                                                                      stdout11_16
+                                                                                                                                                                                    );
+
+                                                                                                                                                                                    // Run the edit business info test
+                                                                                                                                                                                    const editBusinessInfoTestPath =
+                                                                                                                                                                                      path.join(
+                                                                                                                                                                                        __dirname,
+                                                                                                                                                                                        "tests",
+                                                                                                                                                                                        "editBusinessInfo",
+                                                                                                                                                                                        "editBusinessInfo.test.js"
+                                                                                                                                                                                      );
+
+                                                                                                                                                                                    exec(
+                                                                                                                                                                                      `node ${editBusinessInfoTestPath}`,
+                                                                                                                                                                                      (
+                                                                                                                                                                                        error11_17,
+                                                                                                                                                                                        stdout11_17,
+                                                                                                                                                                                        stderr11_17
+                                                                                                                                                                                      ) => {
+                                                                                                                                                                                        if (
+                                                                                                                                                                                          error11_17
+                                                                                                                                                                                        ) {
+                                                                                                                                                                                          console.error(
+                                                                                                                                                                                            `❌ Edit Business Info Test failed: ${error11_17.message}`
+                                                                                                                                                                                          );
+                                                                                                                                                                                          process.exit(
+                                                                                                                                                                                            1
+                                                                                                                                                                                          );
+                                                                                                                                                                                        }
+
+                                                                                                                                                                                        if (
+                                                                                                                                                                                          stderr11_17
+                                                                                                                                                                                        ) {
+                                                                                                                                                                                          console.error(
+                                                                                                                                                                                            `❌ Edit Business Info Test stderr: ${stderr11_17}`
+                                                                                                                                                                                          );
+                                                                                                                                                                                          process.exit(
+                                                                                                                                                                                            1
+                                                                                                                                                                                          );
+                                                                                                                                                                                        }
+
+                                                                                                                                                                                        console.log(
+                                                                                                                                                                                          stdout11_17
+                                                                                                                                                                                        );
+
+                                                                                                                                                                                        // Run the page not found test
+                                                                                                                                                                                        const pageNotFoundTestPath =
+                                                                                                                                                                                          path.join(
+                                                                                                                                                                                            __dirname,
+                                                                                                                                                                                            "tests",
+                                                                                                                                                                                            "pageNotFoundTest",
+                                                                                                                                                                                            "pageNotFoundTest.test.js"
+                                                                                                                                                                                          );
+
+                                                                                                                                                                                        exec(
+                                                                                                                                                                                          `node ${pageNotFoundTestPath}`,
+                                                                                                                                                                                          (
+                                                                                                                                                                                            error12,
+                                                                                                                                                                                            stdout12,
+                                                                                                                                                                                            stderr12
+                                                                                                                                                                                          ) => {
+                                                                                                                                                                                            if (
+                                                                                                                                                                                              error12
+                                                                                                                                                                                            ) {
+                                                                                                                                                                                              console.error(
+                                                                                                                                                                                                `❌ Page Not Found Test failed: ${error12.message}`
+                                                                                                                                                                                              );
+                                                                                                                                                                                              process.exit(
+                                                                                                                                                                                                1
+                                                                                                                                                                                              );
+                                                                                                                                                                                            }
+
+                                                                                                                                                                                            if (
+                                                                                                                                                                                              stderr12
+                                                                                                                                                                                            ) {
+                                                                                                                                                                                              console.error(
+                                                                                                                                                                                                `❌ Page Not Found Test stderr: ${stderr12}`
+                                                                                                                                                                                              );
+                                                                                                                                                                                              process.exit(
+                                                                                                                                                                                                1
+                                                                                                                                                                                              );
+                                                                                                                                                                                            }
+
+                                                                                                                                                                                            console.log(
+                                                                                                                                                                                              stdout12
+                                                                                                                                                                                            );
+
+                                                                                                                                                                                            // Run the user profile page load test
+                                                                                                                                                                                            const userProfilePageLoadTestPath =
+                                                                                                                                                                                              path.join(
+                                                                                                                                                                                                __dirname,
+                                                                                                                                                                                                "tests",
+                                                                                                                                                                                                "userProfilePageLoad",
+                                                                                                                                                                                                "userProfilePageLoad.test.js"
+                                                                                                                                                                                              );
+
+                                                                                                                                                                                            exec(
+                                                                                                                                                                                              `node ${userProfilePageLoadTestPath}`,
+                                                                                                                                                                                              (
+                                                                                                                                                                                                error13,
+                                                                                                                                                                                                stdout13,
+                                                                                                                                                                                                stderr13
+                                                                                                                                                                                              ) => {
+                                                                                                                                                                                                if (
+                                                                                                                                                                                                  error13
+                                                                                                                                                                                                ) {
+                                                                                                                                                                                                  console.error(
+                                                                                                                                                                                                    `❌ User Profile Page Load Test failed: ${error13.message}`
+                                                                                                                                                                                                  );
+                                                                                                                                                                                                  process.exit(
+                                                                                                                                                                                                    1
+                                                                                                                                                                                                  );
+                                                                                                                                                                                                }
+
+                                                                                                                                                                                                if (
+                                                                                                                                                                                                  stderr13
+                                                                                                                                                                                                ) {
+                                                                                                                                                                                                  console.error(
+                                                                                                                                                                                                    `❌ User Profile Page Load Test stderr: ${stderr13}`
+                                                                                                                                                                                                  );
+                                                                                                                                                                                                  process.exit(
+                                                                                                                                                                                                    1
+                                                                                                                                                                                                  );
+                                                                                                                                                                                                }
+
+                                                                                                                                                                                                console.log(
+                                                                                                                                                                                                  stdout13
+                                                                                                                                                                                                );
+
+                                                                                                                                                                                                // Run the unauthenticated profile access test
+                                                                                                                                                                                                const unauthenticatedProfileAccessTestPath =
+                                                                                                                                                                                                  path.join(
+                                                                                                                                                                                                    __dirname,
+                                                                                                                                                                                                    "tests",
+                                                                                                                                                                                                    "unauthenticatedProfileAccess",
+                                                                                                                                                                                                    "unauthenticatedProfileAccess.test.js"
+                                                                                                                                                                                                  );
+
+                                                                                                                                                                                                exec(
+                                                                                                                                                                                                  `node ${unauthenticatedProfileAccessTestPath}`,
+                                                                                                                                                                                                  (
+                                                                                                                                                                                                    error14,
+                                                                                                                                                                                                    stdout14,
+                                                                                                                                                                                                    stderr14
+                                                                                                                                                                                                  ) => {
+                                                                                                                                                                                                    if (
+                                                                                                                                                                                                      error14
+                                                                                                                                                                                                    ) {
+                                                                                                                                                                                                      console.error(
+                                                                                                                                                                                                        `❌ Unauthenticated Profile Access Test failed: ${error14.message}`
+                                                                                                                                                                                                      );
+                                                                                                                                                                                                      process.exit(
+                                                                                                                                                                                                        1
+                                                                                                                                                                                                      );
+                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                    if (
+                                                                                                                                                                                                      stderr14
+                                                                                                                                                                                                    ) {
+                                                                                                                                                                                                      console.error(
+                                                                                                                                                                                                        `❌ Unauthenticated Profile Access Test stderr: ${stderr14}`
+                                                                                                                                                                                                      );
+                                                                                                                                                                                                      process.exit(
+                                                                                                                                                                                                        1
+                                                                                                                                                                                                      );
+                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                    console.log(
+                                                                                                                                                                                                      stdout14
+                                                                                                                                                                                                    );
+                                                                                                                                                                                                    console.log(
+                                                                                                                                                                                                      "\n🎉 All tests completed successfully!"
+                                                                                                                                                                                                    );
+                                                                                                                                                                                                  }
+                                                                                                                                                                                                );
+                                                                                                                                                                                              }
+                                                                                                                                                                                            );
+                                                                                                                                                                                          }
+                                                                                                                                                                                        );
+                                                                                                                                                                                      }
+                                                                                                                                                                                    );
+                                                                                                                                                                                  }
                                                                                                                                                                                 );
                                                                                                                                                                               }
                                                                                                                                                                             );

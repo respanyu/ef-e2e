@@ -3,7 +3,7 @@
   "authUrl": "https://ethiofind.com/auth.txt",
   "loginUrl": "https://ethiofind.com/user/login",
   "name": "Test User Activate",
-  "email": "testing1@ethiofind.com",
+  "email": "tester@ethiofind.com",
   "password": "TestPassword123",
   "phone": "0912345678"
 }

