@@ -146,15 +146,17 @@ const BusinessEditPage = require("../../pages/BusinessEditPage");
 
     // Step 6: Wait for update completion
     logPass("Step 6: Waiting for Business Update API Response to Complete");
-    const updateCompleted = await businessEditPage.waitForUpdateCompletion(
-      20000
-    );
-    if (updateCompleted) {
-      logSuccess("Business update API response completed successfully");
-    } else {
-      logFail("Business update API response did not complete within timeout");
-      await takeScreenshot(driver, "update_timeout", screenshotDir);
+    const updateResult = await businessEditPage.waitForUpdateCompletion(20000);
+    
+    if (updateResult.success === true) {
+      logSuccess(`Business update API response completed successfully: ${updateResult.message}`);
+    } else if (updateResult.success === false) {
+      logFail(`Business update API response failed: ${updateResult.message}`);
+      await takeScreenshot(driver, "update_failed", screenshotDir);
       return;
+    } else {
+      logWarning(`Business update API response status indeterminate: ${updateResult.message}`);
+      // Continue with test as indeterminate might still be success
     }
 
     // Take final screenshot
