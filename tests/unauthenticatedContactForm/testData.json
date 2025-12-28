@@ -1,0 +1,18 @@
+{
+  "homeUrl": "https://ethiofind.com",
+  "timeout": 10000,
+  "selectors": {
+    "businessListings": ".business-card, .business-listing, [class*='business'], .card",
+    "businessLinks": ".business-card a, .business-listing a, [class*='business'] a, .card a, a[href*='business']",
+    "contactForm": "form[method='POST'], .contact-form, #contact-form, form[action*='contact'], form[action*='inquiry']",
+    "contactSubject": "form[method='POST'] input[name='subject'], form[action*='contact'] input[name='subject'], form[action*='inquiry'] input[name='subject']",
+    "contactMessage": "form[method='POST'] textarea[name='message'], form[action*='contact'] textarea[name='message'], form[action*='inquiry'] textarea[name='message']",
+    "contactSubmit": "form[method='POST'] button.button.is-link, form[action*='contact'] button[type='submit'], form[action*='inquiry'] button[type='submit']",
+    "contactButton": ".contact-btn, #contact-btn, [class*='contact'], button[class*='contact'], a[class*='contact']"
+  },
+  "expected": {
+    "subjectDisabled": true,
+    "messageDisabled": true,
+    "submitDisabled": true
+  }
+}

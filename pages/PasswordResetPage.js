@@ -1,4 +1,4 @@
-const { By } = require("selenium-webdriver");
+const { By, Key } = require("selenium-webdriver");
 
 class PasswordResetPage {
   constructor(driver) {
@@ -59,6 +59,13 @@ class PasswordResetPage {
       await submitBtn.click();
     }
     return isEnabled;
+  }
+
+  async submitPasswordResetWithEnter() {
+    // Press Enter key in the email field to submit
+    const emailField = await this.driver.findElement(By.name("email"));
+    await emailField.sendKeys(Key.RETURN);
+    return true; // Enter key is always "pressed"
   }
 
   async isErrorMessageVisible() {

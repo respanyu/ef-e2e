@@ -1,0 +1,9 @@
+{
+  "url": "https://ethiofind.com",
+  "normalBusiness": "Test Business PLC",
+  "normalPhone": "0912345678",
+  "normalCity": "Addis Ababa",
+  "normalEmail": "testbusiness@gmail.com",
+  "normalCategory": "Banking & Financial Services",
+  "sqlPayloads": ["' OR '1'='1", "' OR '1'='1' --"]
+}

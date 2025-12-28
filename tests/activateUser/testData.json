@@ -1,8 +1,9 @@
 {
   "registerUrl": "https://ethiofind.com/user/register",
-  "authFilePath": "/home/bek/Desktop/test/ethiofind/auth.txt",
+  "authUrl": "https://ethiofind.com/auth.txt",
+  "loginUrl": "https://ethiofind.com/user/login",
   "name": "Test User Activate",
-  "email": "testactiv@example.com",
+  "email": "testing1@ethiofind.com",
   "password": "TestPassword123",
   "phone": "0912345678"
 }

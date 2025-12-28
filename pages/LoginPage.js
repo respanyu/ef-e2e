@@ -1,4 +1,4 @@
-const { By } = require("selenium-webdriver");
+const { By, Key } = require("selenium-webdriver");
 
 class LoginPage {
   constructor(driver) {
@@ -31,6 +31,13 @@ class LoginPage {
       await submitBtn.click();
     }
     return isEnabled;
+  }
+
+  async submitLoginWithEnter() {
+    // Press Enter key in the password field to submit
+    const passwordField = await this.driver.findElement(By.name("password"));
+    await passwordField.sendKeys(Key.RETURN);
+    return true; // Enter key is always "pressed"
   }
 
   async checkForLoginErrors() {

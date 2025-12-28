@@ -76,6 +76,15 @@ ethiofind/
 │   ├── register/
 │   │   ├── register.test.js      # User registration functionality
 │   │   └── testData.json
+│   ├── sqlInjectionLogin/
+│   │   ├── sqlInjectionLogin.test.js  # SQL injection security test for login
+│   │   └── testData.json
+│   ├── sqlInjectionRegister/
+│   │   ├── sqlInjectionRegister.test.js  # SQL injection security test for register
+│   │   └── testData.json
+│   ├── sessionPersistence/
+│   │   ├── sessionPersistence.test.js    # Session persistence across browser tabs
+│   │   └── testData.json
 │   ├── activateUser/
 │   │   ├── activateUser.test.js  # User account activation via email verification
 │   │   └── testData.json
@@ -112,7 +121,27 @@ ethiofind/
 │       └── testData.json
 │   └── addBusinessFormTest/
 │       ├── addBusinessFormTest.test.js # Add business form loading validation
-│       └── testData.json
+│       └── testData.json│   ├── sqlInjectionAddBusiness/
+│   │   ├── sqlInjectionAddBusiness.test.js # SQL injection security test for add business form
+│   │   └── testData.json
+│   ├── loginKeyboardSubmit/
+│   │   ├── loginKeyboardSubmit.test.js # Login form keyboard submission test
+│   │   └── testData.json
+│   ├── registerKeyboardSubmit/
+│   │   ├── registerKeyboardSubmit.test.js # Register form keyboard submission test
+│   │   └── testData.json
+│   ├── sqlInjectionPasswordReset/
+│   │   ├── sqlInjectionPasswordReset.test.js # SQL injection security test for password reset form
+│   │   └── testData.json
+│   ├── passwordResetKeyboardSubmit/
+│   │   ├── passwordResetKeyboardSubmit.test.js # Password reset form keyboard submission test
+│   │   └── testData.json
+│   ├── categoryPagination/
+│   │   ├── categoryPagination.test.js # Category pagination functionality test
+│   │   └── testData.json
+│   ├── similarBusinessNavigation/
+│   │   ├── similarBusinessNavigation.test.js # Similar business navigation test
+│   │   └── testData.json
 │   └── pageNotFoundTest/
 │       ├── pageNotFoundTest.test.js # 404 page error handling validation
 │       └── testData.json
@@ -145,11 +174,21 @@ ethiofind/
 │       ├── businessDetailsPageValidation/ # Business details page validation screenshots
 │       ├── loginThenContactBusiness/     # Login then contact business screenshots
 │       ├── addBusiness/          # Add business test screenshots
+│       ├── sqlInjectionAddBusiness/ # SQL injection add business test screenshots
+│       ├── loginKeyboardSubmit/ # Login keyboard submit test screenshots
+│       ├── registerKeyboardSubmit/ # Register keyboard submit test screenshots
+│       ├── sqlInjectionPasswordReset/ # SQL injection password reset test screenshots
+│       ├── passwordResetKeyboardSubmit/ # Password reset keyboard submit test screenshots
+│       ├── categoryPagination/ # Category pagination test screenshots
+│       ├── similarBusinessNavigation/ # Similar business navigation test screenshots
 │       ├── login/                # Original login test screenshots
 │       ├── validEmailLogin/      # Valid email login test screenshots
 │       ├── invalidEmailLogin/    # Invalid email login test screenshots
 │       ├── logout/              # Logout test screenshots
 │       ├── register/             # Register test screenshots
+│       ├── sqlInjectionLogin/    # SQL injection login test screenshots
+│       ├── sqlInjectionRegister/ # SQL injection register test screenshots
+│       ├── sessionPersistence/   # Session persistence test screenshots
 │       ├── passwordReset/        # Password reset test screenshots
 │       ├── header/               # Header test screenshots
 │       ├── footer/               # Footer test screenshots
@@ -178,6 +217,13 @@ npm run test:businessDetailsPageValidation # Business details page content valid
 npm run test:loginThenContactBusiness     # Login then contact business via form
 npm run test:addBusiness       # Add business form submission
 npm run test:addBusinessFormTest # Add business form loading validation
+npm run test:sqlInjectionAddBusiness # SQL injection security test for add business form
+npm run test:loginKeyboardSubmit # Login form keyboard submission test
+npm run test:registerKeyboardSubmit # Register form keyboard submission test
+npm run test:sqlInjectionPasswordReset # SQL injection security test for password reset form
+npm run test:passwordResetKeyboardSubmit # Password reset form keyboard submission test
+npm run test:categoryPagination # Category pagination functionality test
+npm run test:similarBusinessNavigation # Similar business navigation test
 npm run test:searchFormTest    # Search form loading validation
 npm run test:search            # Search functionality validation
 
@@ -188,6 +234,9 @@ npm run test:logout            # User logout functionality
 npm run test:loginThenAddBusiness  # Combined login and add business test
 npm run test:loginThenCheckBusiness  # Login and check claimed business test
 npm run test:register          # User registration functionality
+npm run test:sqlInjectionLogin  # SQL injection security test for login
+npm run test:sqlInjectionRegister  # SQL injection security test for register
+npm run test:sessionPersistence # Session persistence across browser tabs
 npm run test:activateUser      # User account activation via email verification
 npm run test:passwordReset     # Password reset functionality
 
@@ -202,6 +251,7 @@ npm run test:categories        # Categories API content validation
 npm run test:categoriesPageLoad # Categories page load performance
 npm run test:categoryNavigation # Category navigation functionality
 npm run test:logoTest          # Logo loading validation
+npm run test:unauthenticatedContactForm # Contact form access control for unauthenticated users
 npm run test:pageNotFoundTest   # 404 page error handling validation
 ```
 
@@ -221,20 +271,25 @@ This executes tests in the following order:
 4. Business Details Page Validation Test
 5. Login Then Contact Business Test
 6. Add Business Test
-7. Valid Email Login Test
-8. Invalid Email Login Test
-9. Logout Test
-10. Register Test
-11. Password Reset Test
-12. Header Test
-13. Footer Test
-14. Footer Links Test
-15. About Page Test
-16. Categories Page Load Test
-17. Categories Content Test
-18. Category Navigation Test
-19. Search Test
-20. Page Not Found Test
+7. SQL Injection Add Business Test
+8. Valid Email Login Test
+9. Invalid Email Login Test
+10. Logout Test
+11. Register Test
+12. SQL Injection Login Test
+13. SQL Injection Register Test
+14. Session Persistence Test
+15. Password Reset Test
+16. Header Test
+17. Footer Test
+18. Footer Links Test
+19. About Page Test
+20. Categories Page Load Test
+21. Categories Content Test
+22. Category Navigation Test
+23. Search Test
+24. Unauthenticated Contact Form Test
+25. Page Not Found Test
 
 ## Test Descriptions
 
@@ -310,6 +365,45 @@ This executes tests in the following order:
   - Success response handling
   - "Sign In" link navigation
 - **Expected Results**: Proper validation, error messages, and navigation
+
+### SQL Injection Login Test (`test:sqlInjectionLogin`)
+
+- **Purpose**: Tests security against SQL injection attacks on the login form
+- **URL**: `https://ethiofind.com/user/login`
+- **Test Cases**:
+  - Attempt SQL injection payloads in email field with normal password
+  - Attempt SQL injection payloads in password field with normal email
+  - Verify that injection attempts prevent form submission entirely
+  - Check for proper client-side validation and security measures
+  - Capture screenshots for each injection attempt
+- **Expected Results**: All SQL injection attempts are blocked at form submission level, no server requests made
+
+### SQL Injection Register Test (`test:sqlInjectionRegister`)
+
+- **Purpose**: Tests security against SQL injection attacks on the registration form
+- **URL**: `https://ethiofind.com/user/register`
+- **Test Cases**:
+  - Attempt SQL injection payloads in username field
+  - Attempt SQL injection payloads in email field
+  - Attempt SQL injection payloads in password fields
+  - Verify that injection attempts prevent form submission entirely
+  - Check for proper client-side validation and security measures
+  - Capture screenshots for each injection attempt
+- **Expected Results**: All SQL injection attempts are blocked at form submission level, no server requests made
+
+### Session Persistence Test (`test:sessionPersistence`)
+
+- **Purpose**: Validates that user login sessions persist across multiple browser tabs
+- **URL**: `https://ethiofind.com/user/login` (starts with login, then opens new tab)
+- **Test Cases**:
+  - Login with valid credentials in original tab
+  - Verify logout button appears in header after login
+  - Open new browser tab
+  - Navigate to home page in new tab
+  - Verify logout button still appears (session persists)
+  - Switch back to original tab and verify session maintained
+  - Capture screenshots of session state in both tabs
+- **Expected Results**: User session persists across browser tabs, logout button visible in all tabs
 
 ### Valid Email Login Test (`test:validEmailLogin`)
 
@@ -416,6 +510,108 @@ This executes tests in the following order:
   - Form elements accept input (interaction test)
   - Check for any page errors that might affect add business form functionality
 - **Expected Results**: Add business form loads completely with all functional form elements
+
+### SQL Injection Add Business Test (`test:sqlInjectionAddBusiness`)
+
+- **Purpose**: Tests security against SQL injection attacks on the add business form
+- **URL**: `https://ethiofind.com` (homepage, scrolls to add business section)
+- **Test Cases**:
+  - Attempt SQL injection payloads in business name field
+  - Attempt SQL injection payloads in phone field
+  - Attempt SQL injection payloads in email field
+  - Verify that injection attempts prevent form submission entirely
+  - Check for proper client-side validation and security measures
+  - Capture screenshots for each injection attempt
+- **Expected Results**: All SQL injection attempts are blocked at form submission level, no server requests made
+
+### Login Keyboard Submit Test (`test:loginKeyboardSubmit`)
+
+- **Purpose**: Tests that login form can be submitted using keyboard Enter key instead of clicking submit button
+- **URL**: `https://ethiofind.com/user/login`
+- **Test Cases**:
+  - Fill email and password fields with valid credentials
+  - Press Enter key in password field to submit form
+  - Verify form submission occurs without clicking submit button
+  - Check for successful login or appropriate error handling
+  - Capture screenshot of keyboard submission result
+- **Expected Results**: Form submits successfully with Enter key, user authentication works properly
+
+### Register Keyboard Submit Test (`test:registerKeyboardSubmit`)
+
+- **Purpose**: Tests that register form can be submitted using keyboard Enter key instead of clicking submit button
+- **URL**: `https://ethiofind.com/user/register`
+- **Test Cases**:
+  - Fill all registration fields (username, email, password, password repeat)
+  - Press Enter key in password repeat field to submit form
+  - Verify form submission occurs without clicking submit button
+  - Check for successful registration or appropriate error handling
+  - Capture screenshot of keyboard submission result
+- **Expected Results**: Form submits successfully with Enter key, user registration works properly
+
+### SQL Injection Password Reset Test (`test:sqlInjectionPasswordReset`)
+
+- **Purpose**: Tests security against SQL injection attacks on the password reset form
+- **URL**: `https://ethiofind.com/user/password/request`
+- **Test Cases**:
+  - Attempt SQL injection payloads in email field
+  - Verify that injection attempts prevent form submission entirely
+  - Check for proper client-side validation and security measures
+  - Capture screenshots for each injection attempt
+- **Expected Results**: All SQL injection attempts are blocked at form submission level, no server requests made
+
+### Password Reset Keyboard Submit Test (`test:passwordResetKeyboardSubmit`)
+
+- **Purpose**: Tests that password reset form can be submitted using keyboard Enter key instead of clicking submit button
+- **URL**: `https://ethiofind.com/user/password/request`
+- **Test Cases**:
+  - Fill email field with valid email address
+  - Press Enter key in email field to submit form
+  - Verify form submission occurs without clicking submit button
+  - Check for successful password reset request or appropriate error handling
+  - Capture screenshot of keyboard submission result
+- **Expected Results**: Form submits successfully with Enter key, password reset request works properly
+
+### Category Pagination Test (`test:categoryPagination`)
+
+- **Purpose**: Tests category navigation and pagination functionality on category listing pages
+- **URL**: `https://ethiofind.com/categories` (categories page)
+- **Test Cases**:
+  - Load categories page and verify categories are displayed
+  - Click on a category to navigate to category listing page
+  - Verify category page loads with business listings
+  - Check for pagination controls on the category page
+  - Test next page navigation if pagination exists
+  - Test previous page navigation if available
+  - Verify page content changes when navigating between pages
+  - Capture screenshots of different pagination states
+- **Expected Results**: Categories load correctly, category navigation works, pagination controls function properly, and page content updates when navigating between pages
+
+### Similar Business Navigation Test (`test:similarBusinessNavigation`)
+
+- **Purpose**: Tests navigation from business detail pages to similar/related businesses
+- **URL**: `https://ethiofind.com` (home page with business listings)
+- **Test Cases**:
+  - Load home page and navigate to a business details page
+  - Locate similar/related businesses section on the details page
+  - Click on a similar business from the recommendations list
+  - Verify navigation to the selected business details page
+  - Confirm the destination is a different business than the original
+  - Capture screenshots of business details page and similar business navigation
+- **Expected Results**: Similar businesses section exists, clicking similar businesses navigates to different business detail pages, and navigation works correctly without errors
+
+### Unauthenticated Contact Form Test (`test:unauthenticatedContactForm`)
+
+- **Purpose**: Validates that contact form fields (subject and inquiry/message) are properly disabled for unauthenticated users on business detail pages
+- **URL**: `https://ethiofind.com` (home page with business listings)
+- **Test Cases**:
+  - Load home page without authentication
+  - Navigate to a business details page by clicking on a business listing
+  - Locate the contact form on the business details page
+  - Check that the subject field is disabled or readonly for unauthenticated users
+  - Check that the message/inquiry field is disabled or readonly for unauthenticated users
+  - Verify that the submit button is disabled or hidden for unauthenticated users
+  - Capture screenshots of the contact form state for unauthenticated users
+- **Expected Results**: Contact form fields are properly disabled/readonly for unauthenticated users, preventing unauthorized form submissions and maintaining security
 
 ### Page Not Found Test (`test:pageNotFoundTest`)
 
@@ -526,6 +722,30 @@ To run the register test that checks the registration functionality:
 
 ```
 npm run test:register
+```
+
+### Run the SQL Injection Login Test
+
+To run the SQL injection security test for the login form:
+
+```
+npm run test:sqlInjectionLogin
+```
+
+### Run the SQL Injection Register Test
+
+To run the SQL injection security test for the registration form:
+
+```
+npm run test:sqlInjectionRegister
+```
+
+### Run the Session Persistence Test
+
+To run the session persistence test that checks if user login sessions persist across browser tabs:
+
+```
+npm run test:sessionPersistence
 ```
 
 ### Run the Activate User Test

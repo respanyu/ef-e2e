@@ -200,6 +200,163 @@ class BusinessDetailsNavigationPage extends BusinessListingPage {
       return false;
     }
   }
+
+  async checkSimilarBusinessesExist() {
+    try {
+      // Check for similar businesses section
+      const similarSelectors = [
+        ".similar-businesses",
+        ".related-businesses",
+        ".recommended-businesses",
+        "[class*='similar']",
+        "[class*='related']",
+        "[class*='recommended']",
+        ".other-businesses",
+        ".more-businesses",
+      ];
+
+      for (let selector of similarSelectors) {
+        try {
+          const similarElements = await this.driver.findElements(
+            By.css(selector)
+          );
+          if (similarElements.length > 0) {
+            console.log(
+              `📋 Found similar businesses section using selector: ${selector}`
+            );
+            return true;
+          }
+        } catch (error) {
+          continue;
+        }
+      }
+
+      return false;
+    } catch (error) {
+      console.error(`Error checking similar businesses: ${error.message}`);
+      return false;
+    }
+  }
+
+  async clickOnSimilarBusiness() {
+    try {
+      // First check if similar businesses section exists
+      const similarExists = await this.checkSimilarBusinessesExist();
+      if (!similarExists) {
+        console.log("⚠️ No similar businesses section found");
+        return false;
+      }
+
+      // Try to find and click on a similar business
+      const similarBusinessSelectors = [
+        ".similar-businesses a",
+        ".related-businesses a",
+        ".recommended-businesses a",
+        "[class*='similar'] a",
+        "[class*='related'] a",
+        "[class*='recommended'] a",
+        ".similar-businesses .business-card",
+        ".related-businesses .business-card",
+      ];
+
+      for (let selector of similarBusinessSelectors) {
+        try {
+          const similarBusinessElements = await this.driver.findElements(
+            By.css(selector)
+          );
+          if (similarBusinessElements.length > 0) {
+            // Click on the first similar business
+            await similarBusinessElements[0].click();
+            console.log(
+              `🔗 Clicked on similar business using selector: ${selector}`
+            );
+            return true;
+          }
+        } catch (error) {
+          continue;
+        }
+      }
+
+      // If no specific links found, try clicking on business cards in similar section
+      const businessCardSelectors = [
+        ".similar-businesses .card",
+        ".related-businesses .card",
+        ".recommended-businesses .card",
+        "[class*='similar'] .card",
+        "[class*='related'] .card",
+      ];
+
+      for (let selector of businessCardSelectors) {
+        try {
+          const cardElements = await this.driver.findElements(By.css(selector));
+          if (cardElements.length > 0) {
+            await cardElements[0].click();
+            console.log(
+              `🔗 Clicked on similar business card using selector: ${selector}`
+            );
+            return true;
+          }
+        } catch (error) {
+          continue;
+        }
+      }
+
+      return false;
+    } catch (error) {
+      console.error(`Error clicking on similar business: ${error.message}`);
+      return false;
+    }
+  }
+
+  async waitForSimilarBusinessPage(timeout = 10000) {
+    try {
+      // Wait for URL to change (should be a different business details page)
+      await this.driver.sleep(2000); // Wait for navigation
+
+      const currentUrl = await this.driver.getCurrentUrl();
+      const pageTitle = await this.driver.getTitle();
+
+      // Check if we're still on a business details page but different from before
+      if (currentUrl.includes("/business/") && pageTitle) {
+        console.log(`📄 Navigated to similar business page: ${pageTitle}`);
+        return true;
+      }
+
+      return false;
+    } catch (error) {
+      console.error(
+        `Error waiting for similar business page: ${error.message}`
+      );
+      return false;
+    }
+  }
+
+  async verifyDifferentBusiness(originalTitle) {
+    try {
+      const currentTitle = await this.getBusinessDetailsTitle();
+
+      if (!currentTitle || !originalTitle) {
+        return false;
+      }
+
+      // Check if the title is different (indicating we navigated to a different business)
+      const isDifferent =
+        currentTitle.toLowerCase() !== originalTitle.toLowerCase();
+
+      if (isDifferent) {
+        console.log(
+          `✅ Navigated to different business: "${currentTitle}" (was: "${originalTitle}")`
+        );
+      } else {
+        console.log(`⚠️ Still on same business page: "${currentTitle}"`);
+      }
+
+      return isDifferent;
+    } catch (error) {
+      console.error(`Error verifying different business: ${error.message}`);
+      return false;
+    }
+  }
 }
 
 module.exports = BusinessDetailsNavigationPage;

@@ -227,6 +227,201 @@ class CategoryNavigationPage extends CategoriesPage {
       return false;
     }
   }
+
+  async checkPaginationExists() {
+    try {
+      // Check for pagination elements
+      const paginationSelectors = [
+        ".pagination",
+        ".pagination li",
+        ".pagination-link",
+        ".pagination-next",
+        ".pagination-previous",
+        "[class*='pagination']",
+        ".page-link",
+        ".page-item",
+      ];
+
+      for (let selector of paginationSelectors) {
+        try {
+          const paginationElements = await this.driver.findElements(
+            By.css(selector)
+          );
+          if (paginationElements.length > 0) {
+            console.log(`📄 Found pagination using selector: ${selector}`);
+            return true;
+          }
+        } catch (error) {
+          continue;
+        }
+      }
+
+      return false;
+    } catch (error) {
+      console.error(`Error checking pagination: ${error.message}`);
+      return false;
+    }
+  }
+
+  async getPaginationInfo() {
+    try {
+      const paginationInfo = {
+        hasPagination: false,
+        currentPage: null,
+        totalPages: null,
+        hasNext: false,
+        hasPrevious: false,
+      };
+
+      // Check if pagination exists
+      paginationInfo.hasPagination = await this.checkPaginationExists();
+
+      if (!paginationInfo.hasPagination) {
+        return paginationInfo;
+      }
+
+      // Try to find current page indicator
+      const currentPageSelectors = [
+        ".pagination-link.is-current",
+        ".pagination .is-current",
+        ".page-link.active",
+        ".page-item.active",
+        "[class*='current']",
+      ];
+
+      for (let selector of currentPageSelectors) {
+        try {
+          const currentPageElement = await this.driver.findElement(
+            By.css(selector)
+          );
+          const currentPageText = await currentPageElement.getText();
+          if (currentPageText && !isNaN(currentPageText)) {
+            paginationInfo.currentPage = parseInt(currentPageText);
+            break;
+          }
+        } catch (error) {
+          continue;
+        }
+      }
+
+      // Check for next button
+      const nextSelectors = [
+        ".pagination-next",
+        ".pagination .next",
+        "[class*='next']",
+        "a[href*='page=']",
+      ];
+
+      for (let selector of nextSelectors) {
+        try {
+          const nextElements = await this.driver.findElements(By.css(selector));
+          if (nextElements.length > 0) {
+            paginationInfo.hasNext = true;
+            break;
+          }
+        } catch (error) {
+          continue;
+        }
+      }
+
+      // Check for previous button
+      const prevSelectors = [
+        ".pagination-previous",
+        ".pagination .previous",
+        "[class*='previous']",
+      ];
+
+      for (let selector of prevSelectors) {
+        try {
+          const prevElements = await this.driver.findElements(By.css(selector));
+          if (prevElements.length > 0) {
+            paginationInfo.hasPrevious = true;
+            break;
+          }
+        } catch (error) {
+          continue;
+        }
+      }
+
+      return paginationInfo;
+    } catch (error) {
+      console.error(`Error getting pagination info: ${error.message}`);
+      return {
+        hasPagination: false,
+        currentPage: null,
+        totalPages: null,
+        hasNext: false,
+        hasPrevious: false,
+      };
+    }
+  }
+
+  async clickNextPage() {
+    try {
+      const nextSelectors = [
+        ".pagination-next",
+        ".pagination .next",
+        "[class*='next']",
+        "a[href*='page=']",
+      ];
+
+      for (let selector of nextSelectors) {
+        try {
+          const nextElements = await this.driver.findElements(By.css(selector));
+          if (nextElements.length > 0) {
+            await nextElements[0].click();
+            console.log("📄 Clicked next page button");
+            return true;
+          }
+        } catch (error) {
+          continue;
+        }
+      }
+
+      return false;
+    } catch (error) {
+      console.error(`Error clicking next page: ${error.message}`);
+      return false;
+    }
+  }
+
+  async clickPreviousPage() {
+    try {
+      const prevSelectors = [
+        ".pagination-previous",
+        ".pagination .previous",
+        "[class*='previous']",
+      ];
+
+      for (let selector of prevSelectors) {
+        try {
+          const prevElements = await this.driver.findElements(By.css(selector));
+          if (prevElements.length > 0) {
+            await prevElements[0].click();
+            console.log("📄 Clicked previous page button");
+            return true;
+          }
+        } catch (error) {
+          continue;
+        }
+      }
+
+      return false;
+    } catch (error) {
+      console.error(`Error clicking previous page: ${error.message}`);
+      return false;
+    }
+  }
+
+  async waitForPageChange(timeout = 5000) {
+    try {
+      // Wait for loading indicator to disappear or content to update
+      await this.driver.sleep(1000); // Basic wait for page change
+      return true;
+    } catch (error) {
+      return false;
+    }
+  }
 }
 
 module.exports = CategoryNavigationPage;

@@ -1,0 +1,12 @@
+{
+  "loginUrl": "https://ethiofind.com/user/login",
+  "homeUrl": "https://ethiofind.com",
+  "email": "bereket21bnm@gmail.com",
+  "password": "Surafel55",
+  "selectors": {
+    "logoutButton": "a[href*='logout'], .logout, [class*='logout']",
+    "logoutButtonXPath": "//a[contains(@href, 'logout')] | //button[contains(text(), 'Logout')] | //*[contains(@class, 'logout')]",
+    "loginForm": "form[action*='login'], form[method='POST']",
+    "header": "header, nav, .header, .navbar"
+  }
+}

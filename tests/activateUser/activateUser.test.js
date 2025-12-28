@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const https = require("https");
 const { By } = require("selenium-webdriver");
 const { createDriver } = require("../../utils/driver");
 const { sleep } = require("../../utils/wait");
@@ -15,6 +16,32 @@ const {
 const { checkForErrors } = require("../../utils/errors");
 const { takeScreenshot } = require("../../utils/screenshot");
 const RegisterPage = require("../../pages/RegisterPage");
+const LoginPage = require("../../pages/LoginPage");
+
+// Helper function to fetch content from URL
+function fetchUrlContent(url) {
+  return new Promise((resolve, reject) => {
+    const options = {
+      headers: {
+        "User-Agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+      },
+    };
+    https
+      .get(url, options, (res) => {
+        let data = "";
+        res.on("data", (chunk) => {
+          data += chunk;
+        });
+        res.on("end", () => {
+          resolve(data);
+        });
+      })
+      .on("error", (err) => {
+        reject(err);
+      });
+  });
+}
 
 (async function activateUserTest() {
   let driver = await createDriver();
@@ -88,8 +115,8 @@ const RegisterPage = require("../../pages/RegisterPage");
       logPass("Registration completed successfully");
     }
 
-    // Step 2: Read verification link from auth.txt
-    logPass("Step 2: Reading Verification Link");
+    // Step 2: Read verification link from ethiofind.com/auth.txt
+    logPass("Step 2: Reading Verification Link from ethiofind.com/auth.txt");
 
     let verificationLink = null;
     let attempts = 0;
@@ -97,23 +124,28 @@ const RegisterPage = require("../../pages/RegisterPage");
 
     while (attempts < maxAttempts && !verificationLink) {
       try {
-        if (fs.existsSync(testData.authFilePath)) {
-          const fileContent = fs.readFileSync(testData.authFilePath, "utf8");
-          // Extract URL from the file (assuming it's a simple text file with the link)
-          const urlMatch = fileContent.match(/https?:\/\/[^\s]+/);
-          if (urlMatch) {
-            verificationLink = urlMatch[0];
-            logPass(`Verification link found: ${verificationLink}`);
-          }
+        const fileContent = await fetchUrlContent(testData.authUrl);
+
+        // Log the full contents of auth.txt
+        logPass(`Full contents of ${testData.authUrl}:`);
+        console.log("📄 AUTH.TXT CONTENT START");
+        console.log(fileContent);
+        console.log("📄 AUTH.TXT CONTENT END");
+
+        // Extract URL from the content (assuming it's a simple text file with the link)
+        const urlMatch = fileContent.match(/https?:\/\/[^\s]+/);
+        if (urlMatch) {
+          verificationLink = urlMatch[0];
+          logPass(`Verification link found: ${verificationLink}`);
         } else {
           logWarning(
-            `Auth file not found at ${testData.authFilePath}, attempt ${
+            `No URL found in auth.txt content, attempt ${
               attempts + 1
             }/${maxAttempts}`
           );
         }
       } catch (error) {
-        logWarning(`Error reading auth file: ${error.message}`);
+        logWarning(`Error fetching auth URL: ${error.message}`);
       }
 
       if (!verificationLink) {
@@ -206,6 +238,53 @@ const RegisterPage = require("../../pages/RegisterPage");
         "unclear_activation_screenshot",
         screenshotDir
       );
+    }
+
+    // Step 5: Attempt to login with the activated account
+    if (activationSuccess && !activationErrorDetected) {
+      logPass("Step 5: Attempting to Login with Activated Account");
+
+      const loginPage = new LoginPage(driver);
+
+      // Open login page
+      await loginPage.open(testData.loginUrl);
+      logPass("Login page opened");
+
+      // Fill login form
+      await loginPage.fillEmail(testData.email);
+      logPass("Email filled for login");
+
+      await loginPage.fillPassword(testData.password);
+      logPass("Password filled for login");
+
+      // Submit login
+      const loggedIn = await loginPage.submitLogin();
+      if (loggedIn) {
+        logPass("Login form submitted");
+      } else {
+        logWarning("Login submit button is disabled");
+      }
+
+      // Wait for login response
+      await sleep(driver, 3000);
+      logPass("Waited for login response");
+
+      // Check for login errors
+      const loginErrorDetected = await checkForErrors(driver);
+      if (loginErrorDetected) {
+        logFail("Login failed with errors detected");
+        const screenshotDir = path.join(
+          __dirname,
+          "..",
+          "..",
+          "reports",
+          "screenshots",
+          "activateUser"
+        );
+        await takeScreenshot(driver, "login_error_screenshot", screenshotDir);
+      } else {
+        logSuccess("Login successful after activation");
+      }
     }
   } catch (error) {
     logError(`Activate User test failed: ${error}`);

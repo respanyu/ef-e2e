@@ -1,4 +1,4 @@
-const { By } = require("selenium-webdriver");
+const { By, Key } = require("selenium-webdriver");
 
 class RegisterPage {
   constructor(driver) {
@@ -41,6 +41,15 @@ class RegisterPage {
       await submitBtn.click();
     }
     return isEnabled;
+  }
+
+  async submitRegisterWithEnter() {
+    // Press Enter key in the password repeat field to submit
+    const passwordRepeatField = await this.driver.findElement(
+      By.name("password_repeat")
+    );
+    await passwordRepeatField.sendKeys(Key.RETURN);
+    return true; // Enter key is always "pressed"
   }
 
   async checkForRegisterErrors() {

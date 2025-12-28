@@ -1,0 +1,16 @@
+{
+  "url": "https://ethiofind.com/user/register",
+  "normalUsername": "testuser123",
+  "normalEmail": "testuser@example.com",
+  "normalPassword": "password123",
+  "sqlPayloads": [
+    "' OR '1'='1",
+    "' OR '1'='1' --",
+    "' OR 1=1 --",
+    "admin' --",
+    "' UNION SELECT * FROM users --",
+    "' OR ''='",
+    "'; DROP TABLE users; --",
+    "' AND 1=0 UNION SELECT username, password FROM users --"
+  ]
+}
