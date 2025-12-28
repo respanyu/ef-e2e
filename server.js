@@ -1975,7 +1975,5 @@ exec(`node ${pageLoadTestPath}`, (error, stdout, stderr) => {
         );
       }
     );
-  }
-);
-}
-);
+  });
+});
