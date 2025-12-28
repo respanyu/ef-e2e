@@ -471,7 +471,9 @@ class BusinessEditPage {
 
       // Fill subcategory (always try to select from available options)
       totalFields++;
-      console.log(`Looking for subcategory dropdown to select from available options`);
+      console.log(
+        `Looking for subcategory dropdown to select from available options`
+      );
       const subcategorySelectors = [
         "select[name='subcategory']",
         "select[id='category-field']",
@@ -483,10 +485,12 @@ class BusinessEditPage {
         try {
           console.log(`Trying subcategory selector: ${selector}`);
           const elements = await this.driver.findElements(By.css(selector));
-          console.log(`Found ${elements.length} elements for selector: ${selector}`);
+          console.log(
+            `Found ${elements.length} elements for selector: ${selector}`
+          );
           if (elements.length > 0) {
             const select = new Select(elements[0]);
-            
+
             // First, get all available options
             const options = await select.getOptions();
             console.log(`Available subcategories: ${options.length}`);
@@ -495,39 +499,51 @@ class BusinessEditPage {
               const text = await option.getText();
               const value = await option.getAttribute("value");
               if (text && text.trim() !== "") {
-                availableSubcategories.push({ text: text.trim(), value: value });
+                availableSubcategories.push({
+                  text: text.trim(),
+                  value: value,
+                });
                 console.log(`  - ${text.trim()} (value: ${value})`);
               }
             }
-            
+
             // Try to find a matching subcategory from updateData
             let selectedSubcategory = null;
             if (updateData.subcategory) {
               for (const subcategory of availableSubcategories) {
-                if (subcategory.text.toLowerCase().includes(updateData.subcategory.toLowerCase()) ||
-                    subcategory.value === updateData.subcategory) {
+                if (
+                  subcategory.text
+                    .toLowerCase()
+                    .includes(updateData.subcategory.toLowerCase()) ||
+                  subcategory.value === updateData.subcategory
+                ) {
                   selectedSubcategory = subcategory;
                   break;
                 }
               }
             }
-            
+
             // If no match found or no subcategory specified, select the first valid option (excluding "Choose a Subcategory")
             if (!selectedSubcategory) {
-              const validOptions = availableSubcategories.filter(sub => 
-                sub.text !== "" && 
-                !sub.text.toLowerCase().includes("choose") &&
-                sub.value !== ""
+              const validOptions = availableSubcategories.filter(
+                (sub) =>
+                  sub.text !== "" &&
+                  !sub.text.toLowerCase().includes("choose") &&
+                  sub.value !== ""
               );
               if (validOptions.length > 0) {
                 selectedSubcategory = validOptions[0]; // Select first valid subcategory
-                console.log(`✅ Selected first available subcategory: ${selectedSubcategory.text} (fallback)`);
+                console.log(
+                  `✅ Selected first available subcategory: ${selectedSubcategory.text} (fallback)`
+                );
               }
             }
-            
+
             if (selectedSubcategory) {
               await select.selectByVisibleText(selectedSubcategory.text);
-              console.log(`✅ Selected subcategory: ${selectedSubcategory.text} (from available choices)`);
+              console.log(
+                `✅ Selected subcategory: ${selectedSubcategory.text} (from available choices)`
+              );
               subcategoryFound = true;
               fieldsFilled++;
             }
@@ -540,7 +556,9 @@ class BusinessEditPage {
       }
 
       if (!subcategoryFound) {
-        console.log(`⚠️ Subcategory dropdown not found or could not be selected`);
+        console.log(
+          `⚠️ Subcategory dropdown not found or could not be selected`
+        );
       }
 
       // Select category
@@ -566,7 +584,7 @@ class BusinessEditPage {
             );
             if (elements.length > 0) {
               const select = new Select(elements[0]);
-              
+
               // First, get all available options
               const options = await select.getOptions();
               console.log(`Available categories: ${options.length}`);
@@ -579,27 +597,41 @@ class BusinessEditPage {
                   console.log(`  - ${text.trim()} (value: ${value})`);
                 }
               }
-              
+
               // Try to find a matching category from available options
               let selectedCategory = null;
               for (const category of availableCategories) {
-                if (category.text.toLowerCase().includes(updateData.category.toLowerCase()) ||
-                    category.value.toLowerCase().includes(updateData.category.toLowerCase())) {
+                if (
+                  category.text
+                    .toLowerCase()
+                    .includes(updateData.category.toLowerCase()) ||
+                  category.value
+                    .toLowerCase()
+                    .includes(updateData.category.toLowerCase())
+                ) {
                   selectedCategory = category;
                   break;
                 }
               }
-              
+
               if (selectedCategory) {
                 await select.selectByVisibleText(selectedCategory.text);
-                console.log(`✅ Selected category: ${selectedCategory.text} (from available choices)`);
+                console.log(
+                  `✅ Selected category: ${selectedCategory.text} (from available choices)`
+                );
                 categoryFound = true;
               } else {
                 // If no match found, select the first available option (excluding empty/default)
-                const validOptions = availableCategories.filter(cat => cat.text !== "" && !cat.text.toLowerCase().includes("select"));
+                const validOptions = availableCategories.filter(
+                  (cat) =>
+                    cat.text !== "" &&
+                    !cat.text.toLowerCase().includes("select")
+                );
                 if (validOptions.length > 0) {
                   await select.selectByVisibleText(validOptions[0].text);
-                  console.log(`✅ Selected first available category: ${validOptions[0].text} (fallback)`);
+                  console.log(
+                    `✅ Selected first available category: ${validOptions[0].text} (fallback)`
+                  );
                   categoryFound = true;
                 }
               }
@@ -620,8 +652,10 @@ class BusinessEditPage {
         }
       }
 
-      console.log(`📊 Form filling summary: ${fieldsFilled}/${totalFields} fields filled successfully`);
-      
+      console.log(
+        `📊 Form filling summary: ${fieldsFilled}/${totalFields} fields filled successfully`
+      );
+
       // Consider it successful if at least some fields were filled
       return fieldsFilled > 0;
     } catch (error) {
@@ -661,7 +695,7 @@ class BusinessEditPage {
               console.log(
                 `✅ Clicked form submit button using CSS: ${selector}`
               );
-              
+
               // Wait a moment for form submission to start
               await this.driver.sleep(1000);
               return true;
@@ -698,7 +732,7 @@ class BusinessEditPage {
               console.log(
                 `✅ Clicked submit button using XPath: ${xpathSelector}`
               );
-              
+
               // Wait a moment for form submission to start
               await this.driver.sleep(1000);
               return true;
@@ -708,7 +742,7 @@ class BusinessEditPage {
             if (elements.length > 0) {
               await elements[0].click();
               console.log(`✅ Clicked submit button using CSS: ${selector}`);
-              
+
               // Wait a moment for form submission to start
               await this.driver.sleep(1000);
               return true;
@@ -877,10 +911,19 @@ class BusinessEditPage {
         console.log("💥 Business update failed with errors");
         return { success: false, message: "Update failed with errors" };
       } else if (currentUrl.includes("/business/edit") && !errorFound) {
-        console.log("📝 Still on edit page with no errors - update may have completed");
-        return { success: true, message: "Update completed (stayed on edit page)" };
-      } else if (currentUrl.includes("/user/business") || currentUrl.includes("/profile") || 
-                 (!currentUrl.includes("/business/edit") && !currentUrl.includes("/search"))) {
+        console.log(
+          "📝 Still on edit page with no errors - update may have completed"
+        );
+        return {
+          success: true,
+          message: "Update completed (stayed on edit page)",
+        };
+      } else if (
+        currentUrl.includes("/user/business") ||
+        currentUrl.includes("/profile") ||
+        (!currentUrl.includes("/business/edit") &&
+          !currentUrl.includes("/search"))
+      ) {
         console.log("🔄 URL changed - update process completed");
         return { success: true, message: "Update completed (URL changed)" };
       } else {
